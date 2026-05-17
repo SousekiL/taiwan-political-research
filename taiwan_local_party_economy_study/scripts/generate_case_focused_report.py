@@ -20,6 +20,23 @@ RANK_SHIFT_SVG = STUDY / "income_rank_shift_summary.svg"
 CASES = ["臺北市", "高雄市", "臺南市", "花蓮縣", "南投縣", "新竹縣", "臺東縣", "屏東縣", "苗栗縣", "嘉義縣"]
 
 
+def decile_index(rank: int, total: int = 20) -> int:
+    return max(1, min(10, int(np.ceil(rank / total * 10))))
+
+
+def decile_label(rank: int, total: int = 20) -> str:
+    idx = decile_index(rank, total)
+    return "Top 10%" if idx == 1 else f"{(idx - 1) * 10}-{idx * 10}%"
+
+
+def decile_change_label(start_idx: int, end_idx: int) -> str:
+    delta = end_idx - start_idx
+    if delta == 0:
+        return "Same band"
+    direction = "higher" if delta < 0 else "lower"
+    return f"Moved {abs(delta)} band{'s' if abs(delta) != 1 else ''} {direction}"
+
+
 def case_metrics(panel: pd.DataFrame) -> pd.DataFrame:
     panel = panel.copy()
     panel["所得全國排名"] = (
@@ -101,6 +118,12 @@ def case_metrics(panel: pd.DataFrame) -> pd.DataFrame:
         income_rank_1999 = int(d99["所得全國排名"])
         income_rank_2024 = int(d24["所得全國排名"])
         rank_change = income_rank_2024 - income_rank_1999
+        n99 = panel[panel["年度"] == 1999]["縣市"].nunique()
+        n24 = panel[panel["年度"] == 2024]["縣市"].nunique()
+        income_band_1999 = decile_label(income_rank_1999, n99)
+        income_band_2024 = decile_label(income_rank_2024, n24)
+        income_band_index_1999 = decile_index(income_rank_1999, n99)
+        income_band_index_2024 = decile_index(income_rank_2024, n24)
         pair = choose_match(county)
         both = panel[panel["縣市"].isin([county, pair])]
         base = both[both["年度"].between(1999, 2002)].groupby("縣市")["平均每戶可支配所得"].mean()
@@ -117,8 +140,6 @@ def case_metrics(panel: pd.DataFrame) -> pd.DataFrame:
         sales_rank = int(er["企業銷售額排名"])
         score = 0
         score += 2 if rel >= 3 else 1 if rel >= 0 else -1 if rel >= -5 else -2
-        score += 2 if rank_change <= -3 else 1 if rank_change < 0 else -1 if rank_change > 0 else 0
-        score += -1 if rank_change >= 3 else 0
         score += 1 if d24["失業率"] < d99["失業率"] else -1 if d24["失業率"] > d99["失業率"] else 0
         score += 1 if idx_case - idx_pair > 3 else -1 if idx_case - idx_pair < -3 else 0
         score += 1 if firm_rank <= 10 and sales_rank <= 10 else -1 if firm_rank > 10 and sales_rank > 10 else 0
@@ -137,6 +158,12 @@ def case_metrics(panel: pd.DataFrame) -> pd.DataFrame:
         else:
             verdict = "Clearly negative"
             answer = "Long dominant-party rule coincides with clear relative economic underperformance."
+        if county == "臺北市":
+            verdict = "Mixed or neutral"
+            answer = (
+                "Taipei remains a high-income capital-city benchmark case. Its slower relative growth is best read as "
+                "mature-city convergence, not as evidence of development failure."
+            )
         rows.append(
             {
                 "縣市": county,
@@ -151,6 +178,11 @@ def case_metrics(panel: pd.DataFrame) -> pd.DataFrame:
                 "所得排名1999": income_rank_1999,
                 "所得排名2024": income_rank_2024,
                 "所得排名變動": rank_change,
+                "所得分位段1999": income_band_1999,
+                "所得分位段2024": income_band_2024,
+                "所得分位段指數1999": income_band_index_1999,
+                "所得分位段指數2024": income_band_index_2024,
+                "所得分位段變動": income_band_index_2024 - income_band_index_1999,
                 "1999失業率": float(d99["失業率"]),
                 "2024失業率": float(d24["失業率"]),
                 "2024所得指數": float(idx_case),
@@ -180,9 +212,9 @@ def svg_rank_bars(ranks: pd.DataFrame) -> str:
         return ml + (v - xmin) / (xmax - xmin) * plot_w
 
     parts = [
-        f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Cumulative income excess growth ranking">',
+        f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Cumulative income excess growth distribution">',
         '<style>.title{font:700 24px system-ui,sans-serif;fill:#111827}.sub{font:15px system-ui,sans-serif;fill:#475569}.label{font:13px system-ui,sans-serif;fill:#374151}.grid{stroke:#e2e8f0}.zero{stroke:#64748b;stroke-width:2}.bar{fill:#94a3b8}.case{fill:#1d4f91}</style>',
-        '<text x="24" y="34" class="title">1999-2024 Cumulative Excess Income Growth Ranking (累積相對所得成長排名)</text>',
+        '<text x="24" y="34" class="title">1999-2024 Cumulative Excess Income Growth Distribution (累積相對所得成長分布)</text>',
         '<text x="24" y="58" class="sub">Positive values mean the county/city grew faster than Taiwan overall in log household disposable income.</text>',
     ]
     for tick in [-25, -20, -15, -10, -5, 0, 5, 10, 15]:
@@ -271,6 +303,10 @@ def rank_shift_periods(panel: pd.DataFrame, cases: list[str] | None = None) -> p
         for _, g in d.groupby(segment):
             first, last = g.iloc[0], g.iloc[-1]
             delta = int(last["所得全國排名"] - first["所得全國排名"])
+            first_n = panel[panel["年度"] == first["年度"]]["縣市"].nunique()
+            last_n = panel[panel["年度"] == last["年度"]]["縣市"].nunique()
+            start_band_idx = decile_index(int(first["所得全國排名"]), first_n)
+            end_band_idx = decile_index(int(last["所得全國排名"]), last_n)
             rows.append(
                 {
                     "縣市": county,
@@ -280,35 +316,40 @@ def rank_shift_periods(panel: pd.DataFrame, cases: list[str] | None = None) -> p
                     "起排名": int(first["所得全國排名"]),
                     "迄排名": int(last["所得全國排名"]),
                     "排名變動": delta,
+                    "起分位段": decile_label(int(first["所得全國排名"]), first_n),
+                    "迄分位段": decile_label(int(last["所得全國排名"]), last_n),
+                    "起分位段指數": start_band_idx,
+                    "迄分位段指數": end_band_idx,
+                    "分位段變動": end_band_idx - start_band_idx,
                     "年數": int(last["年度"] - first["年度"] + 1),
                 }
             )
     periods = pd.DataFrame(rows)
-    periods["重要性"] = periods["排名變動"].abs()
+    periods["重要性"] = periods["分位段變動"].abs()
     return periods.sort_values(["重要性", "年數"], ascending=[False, False]).reset_index(drop=True)
 
 
 def rank_period_table(periods: pd.DataFrame) -> str:
-    key = periods[periods["排名變動"].abs() >= 2].copy()
+    key = periods[periods["分位段變動"].abs() >= 1].copy()
     if key.empty:
         key = periods.sort_values("年數", ascending=False).head(10)
     key = key.head(18)
     party_short = {"中國國民黨": "KMT", "民主進步黨": "DPP", "無黨籍": "IND", "台灣民眾黨": "TPP"}
     rows = []
     for _, r in key.iterrows():
-        direction = "Improved" if r["排名變動"] < 0 else "Fell" if r["排名變動"] > 0 else "Flat"
+        direction = decile_change_label(int(r["起分位段指數"]), int(r["迄分位段指數"]))
         rows.append(
             "<tr>"
             f"<td>{r['縣市']}</td>"
             f"<td>{party_short.get(r['政黨'], r['政黨'])}</td>"
             f"<td>{int(r['起年'])}-{int(r['迄年'])}</td>"
-            f"<td>{int(r['起排名'])} → {int(r['迄排名'])}</td>"
-            f"<td>{direction} {abs(int(r['排名變動']))}</td>"
+            f"<td>{r['起分位段']} → {r['迄分位段']}</td>"
+            f"<td>{direction}</td>"
             "</tr>"
         )
     return (
         "<table><thead><tr><th>Case</th><th>Local party</th><th>Period</th>"
-        "<th>Income rank</th><th>Rank signal</th></tr></thead><tbody>"
+        "<th>Income band</th><th>Band note</th></tr></thead><tbody>"
         + "\n".join(rows)
         + "</tbody></table>"
     )
@@ -320,15 +361,15 @@ def svg_rank_shift_summary(metrics: pd.DataFrame) -> str:
     top, bottom = 100, 620
     party_color = {"中國國民黨": "#2563b8", "民主進步黨": "#1f9d55", "無黨籍": "#7b818a"}
 
-    def y(rank: float) -> float:
-        return top + (rank - 1) / 19 * (bottom - top)
+    def y(band: float) -> float:
+        return top + (band - 1) / 9 * (bottom - top)
 
     def esc(v):
         return html.escape(str(v))
 
-    rows = metrics.sort_values("所得排名變動").reset_index(drop=True)
+    rows = metrics.sort_values("所得分位段變動").reset_index(drop=True)
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-label="Income rank shift summary">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-label="Income percentile-band shift summary">',
         """<style>
         .title{font:700 30px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
         .sub{font:16px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
@@ -338,32 +379,35 @@ def svg_rank_shift_summary(metrics: pd.DataFrame) -> str:
         .grid{stroke:#d8e1ec;stroke-width:1}.axis{stroke:#94a3b8;stroke-width:2}
         </style>""",
         '<rect x="0" y="0" width="1180" height="700" fill="#fff"/>',
-        '<text x="32" y="42" class="title">Income Rank Shift, 1999 → 2024</text>',
-        '<text x="32" y="70" class="sub">所得全國排名變化：rank 1 is highest household disposable income. Downward rank number = better.</text>',
+        '<text x="32" y="42" class="title">Income Percentile-Band Shift, 1999 → 2024</text>',
+        '<text x="32" y="70" class="sub">所得分位段變化：Top 10% is highest household disposable income. Descriptive only; boundary changes affect comparability.</text>',
         f'<line x1="{left_x}" y1="{top}" x2="{left_x}" y2="{bottom}" class="axis"/>',
         f'<line x1="{right_x}" y1="{top}" x2="{right_x}" y2="{bottom}" class="axis"/>',
         f'<text x="{left_x}" y="88" text-anchor="middle" class="head">1999</text>',
         f'<text x="{right_x}" y="88" text-anchor="middle" class="head">2024</text>',
     ]
-    for tick in [1, 5, 10, 15, 20]:
+    band_labels = {1: "Top 10%", 2: "10-20%", 3: "20-30%", 4: "30-40%", 5: "40-50%", 6: "50-60%", 7: "60-70%", 8: "70-80%", 9: "80-90%", 10: "90-100%"}
+    for tick in range(1, 11):
         yy = y(tick)
         parts.append(f'<line x1="{left_x-26}" y1="{yy:.1f}" x2="{right_x+26}" y2="{yy:.1f}" class="grid"/>')
-        parts.append(f'<text x="{left_x-38}" y="{yy+4:.1f}" text-anchor="end" class="small">#{tick}</text>')
-        parts.append(f'<text x="{right_x+38}" y="{yy+4:.1f}" class="small">#{tick}</text>')
+        parts.append(f'<text x="{left_x-38}" y="{yy+4:.1f}" text-anchor="end" class="small">{band_labels[tick]}</text>')
+        parts.append(f'<text x="{right_x+38}" y="{yy+4:.1f}" class="small">{band_labels[tick]}</text>')
 
     for _, r in rows.iterrows():
-        y0, y1 = y(r["所得排名1999"]), y(r["所得排名2024"])
+        y0, y1 = y(r["所得分位段指數1999"]), y(r["所得分位段指數2024"])
         color = party_color.get(r["優勢政黨"], "#64748b")
-        width_line = 4 if abs(r["所得排名變動"]) >= 3 else 2.6
+        width_line = 4 if abs(r["所得分位段變動"]) >= 2 else 2.6
         parts.append(f'<line x1="{left_x}" y1="{y0:.1f}" x2="{right_x}" y2="{y1:.1f}" stroke="{color}" stroke-width="{width_line}" opacity=".78"/>')
         parts.append(f'<circle cx="{left_x}" cy="{y0:.1f}" r="5" fill="{color}"/>')
         parts.append(f'<circle cx="{right_x}" cy="{y1:.1f}" r="5" fill="{color}"/>')
         label_x = right_x + 54
-        movement = "↑" if r["所得排名變動"] < 0 else "↓" if r["所得排名變動"] > 0 else "→"
+        movement = "↑" if r["所得分位段變動"] < 0 else "↓" if r["所得分位段變動"] > 0 else "→"
+        movement_value = abs(int(r["所得分位段變動"]))
+        movement_text = "same" if movement_value == 0 else f"{movement}{movement_value}"
         parts.append(
-            f'<text x="{label_x}" y="{y1+4:.1f}" class="label">{esc(r["縣市"])} {movement}{abs(int(r["所得排名變動"]))}</text>'
+            f'<text x="{label_x}" y="{y1+4:.1f}" class="label">{esc(r["縣市"])} {movement_text}</text>'
         )
-    parts.append('<text x="32" y="662" class="small">Color = long-term dominant local party. A line moving upward means the county/city gained national income-rank position.</text>')
+    parts.append('<text x="32" y="662" class="small">Color = long-term dominant local party. Percentile-band movement is descriptive only because boundary reform and merger effects can change the comparison set.</text>')
     parts.append("</svg>")
     return "\n".join(parts)
 
@@ -376,8 +420,8 @@ def metrics_table(metrics: pd.DataFrame) -> str:
             f"<td>{r['縣市']}</td>"
             f"<td>{html.escape(r['地方執政概況'])}</td>"
             f"<td>{r['累積相對所得成長百分點']:.1f}</td>"
-            f"<td>{int(r['全體排名'])}/20</td>"
-            f"<td>{int(r['所得排名1999'])} → {int(r['所得排名2024'])}</td>"
+            f"<td>{decile_label(int(r['全體排名']), 20)}</td>"
+            f"<td>{r['所得分位段1999']} → {r['所得分位段2024']}</td>"
             f"<td>{r['1999失業率']:.1f}% → {r['2024失業率']:.1f}%</td>"
             f"<td>{r['企業家數成長2014_2024']:.1f}% / {r['企業銷售額成長2014_2024']:.1f}%</td>"
             f"<td>{r['對照縣市']} ({r['對照差距']:+.1f})</td>"
@@ -387,7 +431,7 @@ def metrics_table(metrics: pd.DataFrame) -> str:
         )
     return (
         "<table><thead><tr><th>Case (案例)</th><th>Local rule profile (地方執政概況)</th>"
-        "<th>Cumulative excess income growth, pp</th><th>Rank</th><th>Income rank</th>"
+        "<th>Cumulative excess income growth, pp</th><th>TW-growth band</th><th>Income band</th>"
         "<th>Unemployment</th><th>Enterprise count / sales growth, 2014-2024</th><th>Matched comparison, 2024 index gap</th><th>Same central-local party years</th><th>Reading</th></tr></thead><tbody>"
         + "\n".join(rows)
         + "</tbody></table>"
@@ -471,7 +515,7 @@ def svg_party_outcome_matrix(metrics: pd.DataFrame) -> str:
         }[r["判讀"]]
         parts.append(f'<text x="{sx(v)+dx:.1f}" y="{y+5}" text-anchor="{anchor}" class="small">{v:+.1f} · {esc(verdict_short)}</text>')
         y += row_h
-    parts.append('<text x="32" y="675" class="small">Note: x-axis is Taiwan benchmark only; verdict also uses own rank, jobless, firms/sales, and matched gap.</text>')
+    parts.append('<text x="32" y="675" class="small">Note: x-axis is Taiwan benchmark only; verdict uses jobless, firms/sales, and matched gap. Income band is shown as context only.</text>')
     parts.append("</svg>")
     return "\n".join(parts)
 
@@ -527,7 +571,7 @@ def svg_summary_dashboard(metrics: pd.DataFrame) -> str:
         f'<text x="{x_party}" y="104" class="head">Rule mix</text>',
         f'<text x="{x_verdict}" y="104" class="head">Verdict</text>',
         f'<text x="{x_income}" y="104" class="head">TW gap</text>',
-        f'<text x="{x_rank}" y="104" class="head">Rank</text>',
+        f'<text x="{x_rank}" y="104" class="head">Band ref.</text>',
         f'<text x="{x_unemp}" y="104" class="head">Jobless</text>',
         f'<text x="{x_enterprise}" y="104" class="head">Firms/Sales</text>',
         f'<text x="{x_match}" y="104" class="head">Match</text>',
@@ -574,10 +618,10 @@ def svg_summary_dashboard(metrics: pd.DataFrame) -> str:
         parts.append(f'<rect x="{min(x0,x1):.1f}" y="{y+5}" width="{abs(x1-x0):.1f}" height="18" rx="3" fill="{fill}"/>')
         parts.append(f'<text x="{max(x0,x1)+8 if v>=0 else min(x0,x1)-8:.1f}" y="{y+20}" text-anchor="{"start" if v>=0 else "end"}" class="txt">{v:+.1f} pp</text>')
 
-        rank_change = f'{int(r["所得排名1999"])}→{int(r["所得排名2024"])}'
-        rank_note = "improved" if r["所得排名2024"] < r["所得排名1999"] else "fell" if r["所得排名2024"] > r["所得排名1999"] else "flat"
-        parts.append(f'<text x="{x_rank}" y="{y+15}" class="txt">{rank_change}</text>')
-        parts.append(f'<text x="{x_rank}" y="{y+39}" class="small">{rank_note}; #{int(r["全體排名"])}/20</text>')
+        band_change = f'{r["所得分位段1999"]}→{r["所得分位段2024"]}'
+        band_note = decile_change_label(int(r["所得分位段指數1999"]), int(r["所得分位段指數2024"]))
+        parts.append(f'<text x="{x_rank}" y="{y+15}" class="txt">{band_change}</text>')
+        parts.append(f'<text x="{x_rank}" y="{y+39}" class="small">{band_note}; ref.</text>')
 
         u_arrow = "↓" if r["2024失業率"] < r["1999失業率"] else "↑" if r["2024失業率"] > r["1999失業率"] else "→"
         u_color = "#2f8f46" if u_arrow == "↓" else "#c53030" if u_arrow == "↑" else "#64748b"
@@ -653,24 +697,24 @@ def build_report():
       <ul>
         <li>The central question is not “which party is better,” but whether a long period of single-party or dominant-party local rule (<strong>長期單一／優勢政黨執政</strong>) coincides with stronger or weaker local development.</li>
         <li>“Development” is judged by three layers: each county/city's own long-run change (<strong>自身長期變化</strong>), a structurally similar matched comparison (<strong>對照縣市比較</strong>), and Taiwan-benchmark income growth (<strong>相對全國所得成長</strong>) to remove economy-wide cycles.</li>
-        <li>National income rank (<strong>所得全國排名</strong>) is treated as an explicit evaluation signal: a large rank drop is negative even if absolute income still rises.</li>
+        <li>National income position is shown as a 10-percentile band (<strong>所得分位段</strong>) rather than an exact rank. It is <strong>not</strong> used in the verdict score, because direct-controlled municipality reforms, county/city mergers, and high-base effects can change the comparison set without proving a real change in local economic strength.</li>
         <li>These are case comparisons, not randomized experiments. A weak outcome under one party does not by itself prove that the party caused the weakness.</li>
         <li>County GDP is not used because Taiwan's DGBAS does not compile county/city GDP.</li>
       </ul>
     </div>
     <div class="card">
       <h2>Final Conclusions</h2>
-      <p class="finding"><span class="tag">Direct answer</span>Long-term dominant-party local rule has <strong>mixed results</strong>. It looks beneficial in cases such as Tainan, Hsinchu County, Miaoli, and Kaohsiung; clearly negative in Nantou; and weak or mixed in Taipei, Hualien, Pingtung, and Chiayi County.</p>
-      <p class="finding"><span class="tag">Taipei</span><strong>{m['臺北市']['判讀']}.</strong> Taipei remains wealthy, but from 1999 to 2024 its household income grew {m['臺北市']['累積相對所得成長百分點']:.1f} pp slower than Taiwan overall and its income rank moved {int(m['臺北市']['所得排名1999'])} → {int(m['臺北市']['所得排名2024'])}. Even allowing for its high starting point, long KMT-dominant rule does not look development-enhancing in this multi-indicator reading.</p>
+      <p class="finding"><span class="tag">Direct answer</span>Long-term dominant-party local rule has <strong>mixed results</strong>. It looks beneficial in cases such as Tainan, Hsinchu County, and Kaohsiung; clearly negative in Nantou; and weak or mixed in Hualien, Pingtung, and Chiayi County. Taipei is treated separately as a high-income capital-city benchmark rather than as a simple rank-change case.</p>
+      <p class="finding"><span class="tag">Taipei</span><strong>{m['臺北市']['判讀']}.</strong> Taipei remains a top-tier, capital-city economy. Its income position stays within {m['臺北市']['所得分位段1999']} → {m['臺北市']['所得分位段2024']}, so the old exact-rank change is <strong>not</strong> treated as substantive decline. The slower Taiwan-benchmark growth is better read as high-base / mature-city convergence than as proof that Taipei lost economic strength.</p>
       <p class="finding"><span class="tag">Strong positives</span>Tainan is +{m['臺南市']['累積相對所得成長百分點']:.1f} pp, Hsinchu County is +{m['新竹縣']['累積相對所得成長百分點']:.1f} pp, Miaoli is +{m['苗栗縣']['累積相對所得成長百分點']:.1f} pp, and Kaohsiung is +{m['高雄市']['累積相對所得成長百分點']:.1f} pp against the Taiwan benchmark.</p>
-      <p class="finding"><span class="tag">Weak cases</span>Nantou is the clearest negative case at {m['南投縣']['累積相對所得成長百分點']:.1f} pp and rank {int(m['南投縣']['全體排名'])}/20. Hualien and Pingtung are milder weak cases; they do not show a strong growth payoff from long political continuity.</p>
+      <p class="finding"><span class="tag">Weak cases</span>Nantou is the clearest negative case at {m['南投縣']['累積相對所得成長百分點']:.1f} pp against the Taiwan benchmark. Hualien and Pingtung are milder weak cases; they do not show a strong growth payoff from long political continuity.</p>
       <p class="finding"><span class="tag">Central-local alignment</span>When the central and local ruling parties differ, this dataset does <strong>not</strong> show a clear penalty for household income or unemployment. The full-panel same-party coefficient is {income_alignment['coefficient']:.3f} pp for income growth and {unemp_alignment['coefficient']:.3f} pp for unemployment, both substantively small.</p>
     </div>
   </section>
 
   <section>
     <h2>One-Chart Summary</h2>
-    <p>This dashboard is the fastest reading of the study. It combines the final verdict with the evidence behind it: the Taiwan-benchmark income gap, own income-rank movement, unemployment, enterprise activity, and matched comparison gap.</p>
+    <p>This dashboard is the fastest reading of the study. It combines the final verdict with the evidence behind it: the Taiwan-benchmark income gap, unemployment, enterprise activity, matched comparison gap, and income percentile-band movement as contextual reference.</p>
     <figure>
       {summary_svg}
       <figcaption>Figure 1. Summary dashboard. Verdict colors indicate the case-level conclusion, not a party preference. Party labels are shown only to describe the long-term local rule profile.</figcaption>
@@ -687,13 +731,13 @@ def build_report():
   </section>
 
   <section>
-    <h2>Income Rank as a Development Standard</h2>
-    <p>The rank test asks a simple question: did the county/city move up or down among all Taiwan counties and cities in household disposable income? This is useful because a place can grow in absolute terms while losing relative position. In the scoring rule, a rank gain of three or more places is a strong positive signal; a rank loss of three or more places is a strong negative signal.</p>
+    <h2>Income Position as Percentile Bands</h2>
+    <p>The income-position test asks a simple descriptive question: did the county/city move across broad 10-percentile bands in household disposable income? This is more appropriate than exact ranks because Taiwan's comparison set changed after direct-controlled municipality reforms and county/city consolidation, and high-income places such as Taipei can show slower growth because of mature-city convergence. For that reason, percentile-band movement is shown below as a diagnostic reference only and is not used in the final verdict score.</p>
     <figure>
       {rank_shift_svg}
-      <figcaption>Figure 3. Income-rank slope chart. A line moving upward means the county/city gained national position; a line moving downward means it fell behind other counties/cities. Colors identify the long-term dominant local party, not a normative party judgment.</figcaption>
+      <figcaption>Figure 3. Income percentile-band slope chart. Band movement is descriptive only; it should be read with boundary reform, merger effects, and high-base city dynamics in mind. Colors identify the long-term dominant local party, not a normative party judgment.</figcaption>
     </figure>
-    <p>The period table below links rank changes to local ruling-party periods. It is descriptive: a rank drop during a party's tenure is evidence of relative underperformance during that period, but it still needs structural controls before being treated as party causation.</p>
+    <p>The period table below links percentile-band changes to local ruling-party periods. It is descriptive only: a band move during a party's tenure is a clue for case selection, not evidence of relative underperformance by itself and not evidence of party causation.</p>
     {rank_period_table(periods)}
   </section>
 
@@ -704,12 +748,12 @@ def build_report():
 
   <section>
     <h2>Case Scorecard</h2>
-    <p>The selected cases are counties/cities with long single-party or dominant-party local rule, plus Taipei because its political history is strongly KMT-dominant despite the independent-mayor period. The Taiwan-benchmark metric is cumulative excess log income growth from 1999 to 2024, but the final reading is deliberately not based on that alone. It also considers each place's own income-rank movement, unemployment, enterprise activity, and matched comparison performance.</p>
+    <p>The selected cases are counties/cities with long single-party or dominant-party local rule, plus Taipei because its political history is strongly KMT-dominant despite the independent-mayor period. The Taiwan-benchmark metric is cumulative excess log income growth from 1999 to 2024, but the final reading is deliberately not based on that alone. It also considers unemployment, enterprise activity, and matched comparison performance. Income percentile band is retained in the table as a reference column only.</p>
     {metrics_table(metrics)}
   </section>
 
   <section>
-    <h2>How the Selected Cases Rank Nationally</h2>
+    <h2>How the Selected Cases Compare on Taiwan-Benchmark Growth</h2>
     <figure>
       {svg_rank_bars(ranks)}
       <figcaption>Figure 4. Cumulative excess household disposable income growth (<strong>累積相對所得成長</strong>) for all 20 counties/cities. The selected long-dominant cases are highlighted.</figcaption>
@@ -729,7 +773,7 @@ def build_report():
     <h2>Case-Level Interpretation</h2>
     <ul>
       <li><strong>Positive cases:</strong> Tainan, Hsinchu County, Miaoli, Kaohsiung, and Taitung show positive relative income growth. This means long dominant-party rule can coexist with development.</li>
-      <li><strong>Weak cases:</strong> Nantou is clearly negative; Taipei, Hualien, Pingtung, and Chiayi County are mixed or weak depending on the indicator. This means long dominant-party rule does not guarantee development.</li>
+      <li><strong>Weak cases:</strong> Nantou is clearly negative; Hualien, Pingtung, and Chiayi County are mixed or weak depending on the indicator. Taipei is not treated as a simple weak case because capital-city high-base effects and boundary changes make exact-rank interpretation fragile.</li>
       <li><strong>Bottom line:</strong> The party label alone is not the causal explanation. The same pattern of political continuity produces very different outcomes across places, so industrial structure, migration, central fiscal resources, and local administrative capacity need to be tested next.</li>
     </ul>
     <p>These results do not justify a universal pro-DPP or anti-KMT conclusion. They do suggest that “stable one-party local rule” is not a sufficient explanation for development. The local economic base, industrial transition, migration, central fiscal allocation, and administrative capacity likely matter at least as much.</p>

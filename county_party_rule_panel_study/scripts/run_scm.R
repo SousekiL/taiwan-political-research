@@ -1,7 +1,13 @@
 library(Synth)
 library(SCtools)
 
-setwd("/Users/sousekilyu/Documents/Github/taiwan-political-research")
+script_args <- commandArgs(trailingOnly = FALSE)
+script_path <- sub("--file=", "", script_args[grep("--file=", script_args)])
+if (length(script_path) > 0) {
+  setwd(dirname(dirname(normalizePath(script_path))))
+} else {
+  setwd(normalizePath(file.path(getwd(), "..")))
+}
 
 # Load balanced panel (all counties have all years, with NAs for missing)
 df <- read.csv("data/merged_panel_balanced.csv", stringsAsFactors = FALSE)

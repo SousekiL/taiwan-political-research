@@ -13,6 +13,8 @@ from pathlib import Path
 import warnings
 warnings.filterwarnings('ignore')
 
+DOCS_DIR = Path(__file__).resolve().parents[1]
+
 font_path = None
 for f in fm.findSystemFonts(fontext='ttc'):
     if 'com_apple' in f and 'PingFang' in f:
@@ -22,10 +24,10 @@ if font_path:
     plt.rcParams['font.sans-serif'] = ['PingFang TC', 'Arial Unicode MS', 'Helvetica']
 plt.rcParams['axes.unicode_minus'] = False
 
-RESULTDIR = Path("/Users/sousekilyu/Documents/Github/taiwan-political-research/results")
+RESULTDIR = DOCS_DIR / "results"
 RESULTDIR.mkdir(exist_ok=True)
 
-df = pd.read_csv("../data/merged_panel.csv")
+df = pd.read_csv(DOCS_DIR / "data" / "merged_panel.csv")
 for c in ['per_capita_income','log_income','unemployment_rate','population','tax_revenue_per_capita']:
     df[c] = pd.to_numeric(df[c], errors='coerce')
 

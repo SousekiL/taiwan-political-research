@@ -8,8 +8,9 @@ Kept for reference only; to regenerate the report, update b64 filenames first.
 import base64
 from pathlib import Path
 
-RESULTDIR = Path("/Users/sousekilyu/Documents/Github/taiwan-political-research/results")
-OUT = Path("/Users/sousekilyu/Documents/Github/taiwan-political-research/research-design-report.html")
+DOCS_DIR = Path(__file__).resolve().parents[1]
+RESULTDIR = DOCS_DIR / "results"
+OUT = DOCS_DIR / "index.html"
 
 # Load chart base64
 summary_b64 = open(RESULTDIR / 'summary_conclusion_b64.b64').read().strip()

@@ -208,18 +208,21 @@ This document summarizes the data processing principles, visualization standards
 taiwan-political-research/
 ├── .gitignore
 ├── README.md
-├── index.html                   # GitHub Pages entry (= final report version)
-├── research-design-report.html  # Main report file
-├── fetch_data.py                # Economic data collection
-├── build_election_data.py       # Election data construction
-├── run_analysis_v2.py           # Main analysis pipeline
-├── make_dashboard.py            # Dashboard summary chart
-├── make_summary_chart.py        # Figure 1 excess growth rate chart
-├── build_final_report.py        # Report assembly
-├── run_analysis.py              # Early version (kept for reference)
-├── run_scm.R                    # R version SCM
-├── data/                        # CSV panel data (.gitignore)
-└── results/                     # Generated charts (.gitignore)
+├── PRINCIPLES.md
+├── docs/                        # GitHub Pages root
+│   ├── index.html               # Main report, copied from main package output
+│   └── party_alignment_report.html
+├── taiwan_local_party_economy_study/     # Main research package
+    ├── README.md
+    ├── scripts/
+    ├── data/
+    ├── outputs/
+│   └── study_outputs/
+└── county_party_rule_panel_study/        # Secondary parallel package
+    ├── index.html
+    ├── scripts/
+    ├── data/
+    └── results/
 ```
 
 ---

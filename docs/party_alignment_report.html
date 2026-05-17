@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central-Local Party Alignment and Local Economic Development in Taiwan</title>
+  <style>
+    :root { --ink:#111827; --muted:#475569; --line:#d8e1ec; --bg:#f8fafc; --blue:#1d4f91; }
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:white; }
+    main { max-width: 1120px; margin: 0 auto; padding: 48px 28px 80px; }
+    h1 { font-size: 42px; line-height:1.08; margin:0 0 12px; letter-spacing:0; }
+    h2 { font-size: 26px; margin: 34px 0 12px; border-top:1px solid var(--line); padding-top:26px; }
+    h3 { font-size: 19px; margin: 24px 0 8px; }
+    p, li { font-size: 16px; line-height:1.65; }
+    .dek { color:var(--muted); font-size:18px; max-width:860px; }
+    .front { display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:28px; }
+    .card { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:20px 22px; }
+    .card h2 { margin-top:0; border:0; padding-top:0; }
+    .finding { font-size:17px; line-height:1.55; }
+    .tag { display:inline-block; font-size:13px; background:#e8f0fb; color:#163d73; padding:4px 8px; border-radius:999px; margin-right:6px; }
+    table { border-collapse: collapse; width:100%; margin: 14px 0 24px; font-size:14px; }
+    th, td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { background:#f1f5f9; font-weight:700; }
+    figure { margin: 26px 0; border:1px solid var(--line); border-radius:12px; padding:16px; overflow:auto; background:#fff; }
+    figcaption { color:var(--muted); font-size:14px; line-height:1.5; margin-top:8px; }
+    dl { columns:2; column-gap:44px; }
+    dt { font-weight:700; break-inside:avoid; margin-top:10px; }
+    dd { margin:2px 0 10px; color:var(--muted); break-inside:avoid; }
+    .note { color:var(--muted); font-size:14px; }
+    code { background:#f1f5f9; padding:2px 5px; border-radius:4px; }
+    @media (max-width: 780px) { .front { grid-template-columns:1fr; } dl { columns:1; } h1 { font-size:32px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Central-Local Party Alignment and Local Economic Development in Taiwan</h1>
+  <p class="dek">A reproducible quasi-causal research report on whether sharing the same central and local ruling party (<strong>中央地方同黨</strong>) is associated with county/city economic outcomes in Taiwan.</p>
+
+  <section class="front">
+    <div class="card">
+      <h2>Assumptions First</h2>
+      <ul>
+        <li><strong>Local economic development</strong> is proxied by disposable income (<strong>可支配所得</strong>), unemployment (<strong>失業率</strong>), and enterprise activity (<strong>企業活動</strong>), not by county GDP. Taiwan's DGBAS does not compile county/city GDP.</li>
+        <li><strong>Central-local same party</strong> means the president's party (<strong>中央執政黨</strong>) matches the elected county/city mayor's party (<strong>縣市首長黨籍</strong>) on July 1 of each year.</li>
+        <li>Independent and third-party mayors are treated as not same-party with the central government in the baseline.</li>
+        <li>The estimates are quasi-causal evidence, not a randomized experiment.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Final Conclusions</h2>
+      <p class="finding"><span class="tag">Nonpartisan reading</span>The evidence does <strong>not</strong> show a broad, reliable advantage for either major party. It also does not show that same-party alignment consistently improves household income growth.</p>
+      <p class="finding"><span class="tag">Main result</span>For household disposable income, the baseline same-party coefficient is 0.057 percentage points with clustered SE 0.450; this is substantively small and statistically indistinguishable from zero.</p>
+      <p class="finding"><span class="tag">Labor market</span>The unemployment estimate is similarly small: 0.007 percentage points, SE 0.025.</p>
+      <p class="finding"><span class="tag">Enterprise activity</span>Enterprise count and sales show positive same-party associations after 2014, but this shorter series may reflect sectoral composition, local selection, or transfer mechanisms. It should not be read as proof that any party governs the local economy better.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Research Question</h2>
+    <p>This report asks whether counties and cities governed by the same party as the central executive perform differently from those governed by a different party. It also asks whether counties long governed by one party can be compared with similar counties governed by another party.</p>
+    <p>The report is written as a neutral empirical assessment. Party labels are treated as institutional variables, not as normative rankings. A positive or negative coefficient is interpreted as an association under a specific model, not as evidence of political virtue, competence, or blame.</p>
+  </section>
+
+  <section>
+    <h2>Relevant International Literature</h2>
+    <p>The international literature gives a balanced prior. In several countries, politically aligned local governments have been found to receive more intergovernmental transfers or infrastructure grants. However, the literature also warns that transfer advantages do not mechanically imply better local economic outcomes; institutional rules, fiscal formulas, local capacity, and industrial structure can dominate partisan channels.</p>
+    <ol><li>Solé-Ollé, A., &amp; Sorribas-Navarro, P. (2008). “The effects of partisan alignment on the allocation of intergovernmental transfers.” Journal of Public Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0047272707000990">link</a><br><span class="note">Spain; difference-in-differences evidence that alignment can affect grants.</span></li>
+<li>Brollo, F., &amp; Nannicini, T. (2012). “Tying Your Enemy’s Hands in Close Races: The Politics of Federal Transfers in Brazil.” American Political Science Review. <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/tying-your-enemys-hands-in-close-races-the-politics-of-federal-transfers-in-brazil/15C1E15B8603C82B79592E34478C68D9">link</a><br><span class="note">Brazil; close-election design linking political incentives and federal transfers.</span></li>
+<li>Bracco, E., Lockwood, B., Porcelli, F., &amp; Redoano, M. (2015). “Intergovernmental grants as signals and the alignment effect: Theory and evidence.” Journal of Public Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0047272714002291">link</a><br><span class="note">Theory and evidence on grants as political signals under alignment.</span></li>
+<li>Siwińska-Gorzelak, J., &amp; Bukowska, G. (2023). “Intragovernmental Grant Distribution and Party Alignment Bias under Democratic and Authoritarian Governments: The Case of Poland.” East European Politics and Societies. <a href="https://journals.sagepub.com/doi/10.1177/08883254221116787">link</a><br><span class="note">Poland; quasi-experimental evidence on alignment bias in grants.</span></li>
+<li>Lee, H. et al. (2024). “Ideology, intergovernmental transfers, and public health spending: Evidence from South Korea.” Regional Science and Urban Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0166046224001054">link</a><br><span class="note">South Korea; ideology, transfers, and local policy spending.</span></li>
+<li>Dahlberg, M., Mörk, E., Rattsø, J., &amp; Ågren, H. (2008). “Using a discontinuous grant rule to identify the effect of grants on local taxes and spending.” Journal of Public Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0047272707001028">link</a><br><span class="note">Useful benchmark on grant effects and local fiscal behavior, separate from party alignment.</span></li></ol>
+  </section>
+
+  <section>
+    <h2>Data and Measures</h2>
+    <p>The panel covers 20 Taiwan counties/cities (<strong>縣市</strong>) from 1998 to 2024. Income and unemployment are available for the full panel. Enterprise count and sales are available from 2013, so their growth models begin in 2014.</p>
+    <ul>
+      <li><strong>Income outcome:</strong> excess log growth of average household disposable income (<strong>平均每戶可支配所得相對對數成長率</strong>), in percentage points.</li>
+      <li><strong>Labor outcome:</strong> unemployment rate level and annual change (<strong>失業率、失業率變動</strong>).</li>
+      <li><strong>Enterprise outcomes:</strong> log growth in enterprise count and enterprise sales (<strong>企業家數、企業銷售額</strong>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Model Results</h2>
+    <p>The baseline model uses county/city fixed effects (<strong>縣市固定效果</strong>) and year fixed effects (<strong>年度固定效果</strong>), with standard errors clustered by county/city.</p>
+    <table><thead><tr><th>Outcome (結果變數)</th><th>Coefficient</th><th>Clustered SE</th><th>Normal p-value</th><th>N</th><th>Years</th></tr></thead><tbody><tr><td>所得相對成長率百分點</td><td>0.057</td><td>0.450</td><td>0.899</td><td>520</td><td>1999-2024</td></tr>
+<tr><td>失業率</td><td>0.007</td><td>0.025</td><td>0.770</td><td>540</td><td>1998-2024</td></tr>
+<tr><td>失業率變動</td><td>-0.026</td><td>0.023</td><td>0.270</td><td>520</td><td>1999-2024</td></tr>
+<tr><td>企業家數對數成長率</td><td>0.003</td><td>0.001</td><td>0.009</td><td>208</td><td>2014-2024</td></tr>
+<tr><td>企業銷售額對數成長率</td><td>0.030</td><td>0.009</td><td>0.001</td><td>208</td><td>2014-2024</td></tr></tbody></table>
+    <figure>
+      <svg viewBox="0 0 940 420" role="img" aria-label="Coefficient plot">
+<style>.axis{stroke:#cbd5e1;stroke-width:1}.zero{stroke:#64748b;stroke-width:2}.ci{stroke:#1f2937;stroke-width:3}.pt{fill:#1d4f91}.label{font:14px system-ui, sans-serif;fill:#374151}.title{font:700 24px system-ui, sans-serif;fill:#111827}.sub{font:15px system-ui, sans-serif;fill:#475569}</style>
+<text x="24" y="34" class="title">Estimated Same-Party Association (同黨效果估計)</text>
+<text x="24" y="59" class="sub">Baseline county and year fixed effects; bars show ±1.96 clustered SE.</text>
+<line x1="497.3" y1="63" x2="497.3" y2="363" class="zero"/>
+<line x1="410.0" y1="63" x2="410.0" y2="363" class="axis"/>
+<text x="410.0" y="391" text-anchor="middle" class="label">-1</text>
+<line x1="497.3" y1="63" x2="497.3" y2="363" class="axis"/>
+<text x="497.3" y="391" text-anchor="middle" class="label">0</text>
+<line x1="584.5" y1="63" x2="584.5" y2="363" class="axis"/>
+<text x="584.5" y="391" text-anchor="middle" class="label">1</text>
+<line x1="671.8" y1="63" x2="671.8" y2="363" class="axis"/>
+<text x="671.8" y="391" text-anchor="middle" class="label">2</text>
+<line x1="759.1" y1="63" x2="759.1" y2="363" class="axis"/>
+<text x="759.1" y="391" text-anchor="middle" class="label">3</text>
+<line x1="846.4" y1="63" x2="846.4" y2="363" class="axis"/>
+<text x="846.4" y="391" text-anchor="middle" class="label">4</text>
+<text x="24" y="93" class="label">Income excess growth (所得相對成長率)</text>
+<line x1="425.3" y1="88" x2="579.2" y2="88" class="ci"/>
+<circle cx="502.3" cy="88" r="6" class="pt"/>
+<text x="587.2" y="93" class="label">0.057</text>
+<text x="24" y="148" class="label">Unemployment rate level (失業率)</text>
+<line x1="493.7" y1="143" x2="502.1" y2="143" class="ci"/>
+<circle cx="497.9" cy="143" r="6" class="pt"/>
+<text x="510.1" y="148" class="label">0.007</text>
+<text x="24" y="203" class="label">Change in unemployment rate (失業率變動)</text>
+<line x1="491.1" y1="198" x2="499.0" y2="198" class="ci"/>
+<circle cx="495.0" cy="198" r="6" class="pt"/>
+<text x="507.0" y="203" class="label">-0.026</text>
+<text x="24" y="258" class="label">Enterprise count growth (企業家數成長)</text>
+<line x1="497.3" y1="253" x2="497.7" y2="253" class="ci"/>
+<circle cx="497.5" cy="253" r="6" class="pt"/>
+<text x="505.7" y="258" class="label">0.003</text>
+<text x="24" y="313" class="label">Enterprise sales growth (企業銷售額成長)</text>
+<line x1="498.3" y1="308" x2="501.5" y2="308" class="ci"/>
+<circle cx="499.9" cy="308" r="6" class="pt"/>
+<text x="509.5" y="313" class="label">0.030</text>
+<text x="410" y="402" class="label">Coefficient on central-local same party (中央地方同黨)</text>
+</svg>
+      <figcaption>Figure 1. Baseline coefficient plot for central-local same-party alignment (<strong>中央地方同黨</strong>). Confidence bars use ±1.96 clustered standard errors.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Event Study: Local Party Alternation</h2>
+    <p>The event study averages counties/cities that switched between the two major parties (<strong>主要政黨輪替</strong>). The pre-period average from years -3 to -1 is -0.174 percentage points. Because the path is noisy and does not form a clean post-switch break, it should not be interpreted as strong causal evidence.</p>
+    <figure>
+      <svg viewBox="0 0 900 480" role="img" aria-label="Event study chart">
+<style>.axis{stroke:#cbd5e1;stroke-width:1}.zero{stroke:#475569;stroke-width:2}.line{fill:none;stroke:#1d4f91;stroke-width:4}.dot{fill:#1d4f91}.label{font:14px system-ui, sans-serif;fill:#475569}.title{font:700 24px system-ui, sans-serif;fill:#111827}.sub{font:15px system-ui, sans-serif;fill:#475569}</style>
+<text x="24" y="34" class="title">Local Party Alternation Event Study (地方政黨輪替事件研究)</text>
+<text x="24" y="59" class="sub">Outcome: excess log income growth, percentage points (所得相對成長率百分點). Event year = 0.</text>
+<rect x="70" y="80" width="800" height="338" fill="#fff" stroke="#cbd5e1"/>
+<line x1="70" y1="418.0" x2="870" y2="418.0" class="axis"/>
+<text x="58" y="423.0" text-anchor="end" class="label">-8</text>
+<line x1="70" y1="375.8" x2="870" y2="375.8" class="axis"/>
+<text x="58" y="380.8" text-anchor="end" class="label">-6</text>
+<line x1="70" y1="333.5" x2="870" y2="333.5" class="axis"/>
+<text x="58" y="338.5" text-anchor="end" class="label">-4</text>
+<line x1="70" y1="291.2" x2="870" y2="291.2" class="axis"/>
+<text x="58" y="296.2" text-anchor="end" class="label">-2</text>
+<line x1="70" y1="249.0" x2="870" y2="249.0" class="axis"/>
+<text x="58" y="254.0" text-anchor="end" class="label">+0</text>
+<line x1="70" y1="206.8" x2="870" y2="206.8" class="axis"/>
+<text x="58" y="211.8" text-anchor="end" class="label">+2</text>
+<line x1="70" y1="164.5" x2="870" y2="164.5" class="axis"/>
+<text x="58" y="169.5" text-anchor="end" class="label">+4</text>
+<line x1="70" y1="122.2" x2="870" y2="122.2" class="axis"/>
+<text x="58" y="127.2" text-anchor="end" class="label">+6</text>
+<line x1="70" y1="80.0" x2="870" y2="80.0" class="axis"/>
+<text x="58" y="85.0" text-anchor="end" class="label">+8</text>
+<line x1="470.0" y1="80" x2="470.0" y2="418" class="zero"/>
+<polyline points="70.0,248.3 150.0,249.4 230.0,230.4 310.0,255.4 390.0,272.3 470.0,218.1 550.0,297.7 630.0,223.8 710.0,279.4 790.0,186.0 870.0,290.4" class="line"/>
+<circle cx="70.0" cy="248.3" r="5" class="dot"/>
+<circle cx="150.0" cy="249.4" r="5" class="dot"/>
+<circle cx="230.0" cy="230.4" r="5" class="dot"/>
+<circle cx="310.0" cy="255.4" r="5" class="dot"/>
+<circle cx="390.0" cy="272.3" r="5" class="dot"/>
+<circle cx="470.0" cy="218.1" r="5" class="dot"/>
+<circle cx="550.0" cy="297.7" r="5" class="dot"/>
+<circle cx="630.0" cy="223.8" r="5" class="dot"/>
+<circle cx="710.0" cy="279.4" r="5" class="dot"/>
+<circle cx="790.0" cy="186.0" r="5" class="dot"/>
+<circle cx="870.0" cy="290.4" r="5" class="dot"/>
+<text x="70.0" y="446" text-anchor="middle" class="label">-5</text>
+<text x="150.0" y="446" text-anchor="middle" class="label">-4</text>
+<text x="230.0" y="446" text-anchor="middle" class="label">-3</text>
+<text x="310.0" y="446" text-anchor="middle" class="label">-2</text>
+<text x="390.0" y="446" text-anchor="middle" class="label">-1</text>
+<text x="470.0" y="446" text-anchor="middle" class="label">0</text>
+<text x="550.0" y="446" text-anchor="middle" class="label">1</text>
+<text x="630.0" y="446" text-anchor="middle" class="label">2</text>
+<text x="710.0" y="446" text-anchor="middle" class="label">3</text>
+<text x="790.0" y="446" text-anchor="middle" class="label">4</text>
+<text x="870.0" y="446" text-anchor="middle" class="label">5</text>
+<text x="70" y="466" class="label">Years relative to party alternation (相對年度)</text>
+<text x="25" y="68" class="label">pp</text>
+</svg>
+      <figcaption>Figure 2. Local party alternation event study (<strong>地方政黨輪替事件研究</strong>) for income excess growth.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Matched Case Comparisons</h2>
+    <p>For long-run single-party counties (<strong>長期單一政黨縣市</strong>), matched comparison counties were selected using baseline income, baseline unemployment, and baseline income volatility. The matched cases are descriptive and should be used to guide qualitative case selection.</p>
+    <figure>
+      <svg viewBox="0 0 1000 1020" role="img" aria-label="Matched cases">
+<style>.grid{stroke:#e2e8f0;stroke-width:1}.box{fill:#fff;stroke:#cbd5e1}.treated{fill:none;stroke:#1d4f91;stroke-width:3}.control{fill:none;stroke:#b4532a;stroke-width:3}.label{font:13px system-ui, sans-serif;fill:#475569}.title{font:700 24px system-ui, sans-serif;fill:#111827}.case{font:700 18px system-ui, sans-serif;fill:#111827}.sub{font:15px system-ui, sans-serif;fill:#475569}</style>
+<text x="24" y="34" class="title">Long-Run Single-Party Counties and Matched Cases (長期單一政黨縣市配對)</text>
+<text x="24" y="59" class="sub">Income index, 1999-2002 average = 100 (所得指數).</text>
+<rect x="55" y="95" width="440" height="245" class="box"/>
+<text x="69" y="121" class="case">臺南市</text>
+<line x1="100" y1="305.0" x2="468" y2="305.0" class="grid"/>
+<text x="65" y="309.0" class="label">90</text>
+<line x1="100" y1="238.2" x2="468" y2="238.2" class="grid"/>
+<text x="65" y="242.2" class="label">110</text>
+<line x1="100" y1="171.4" x2="468" y2="171.4" class="grid"/>
+<text x="65" y="175.4" class="label">130</text>
+<polyline points="100.0,270.1 114.2,273.7 128.3,261.4 142.5,282.1 156.6,269.1 170.8,250.9 184.9,250.5 199.1,273.3 213.2,248.9 227.4,237.8 241.5,240.5 255.7,258.2 269.8,271.7 284.0,252.6 298.2,258.5 312.3,231.3 326.5,231.5 340.6,228.1 354.8,206.9 368.9,198.8 383.1,200.4 397.2,198.1 411.4,198.1 425.5,188.7 439.7,181.0 453.8,167.8 468.0,150.4" class="treated"/>
+<text x="305" y="123" class="label">treated: 臺南市</text>
+<polyline points="100.0,262.8 114.2,243.9 128.3,253.3 142.5,288.0 156.6,301.2 170.8,264.7 184.9,286.5 199.1,245.7 213.2,269.6 227.4,277.0 241.5,234.6 255.7,279.1 269.8,254.5 284.0,289.9 298.2,215.0 312.3,249.5 326.5,210.7 340.6,185.1 354.8,208.8 368.9,211.3 383.1,209.0 397.2,202.4 411.4,185.8 425.5,190.0 439.7,185.0 453.8,194.1 468.0,194.5" class="control"/>
+<text x="305" y="141" class="label">matched: 宜蘭縣</text>
+<text x="128.3" y="328" text-anchor="middle" class="label">2000</text>
+<text x="241.5" y="328" text-anchor="middle" class="label">2008</text>
+<text x="354.8" y="328" text-anchor="middle" class="label">2016</text>
+<text x="468.0" y="328" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="95" width="440" height="245" class="box"/>
+<text x="554" y="121" class="case">屏東縣</text>
+<line x1="585" y1="305.0" x2="953" y2="305.0" class="grid"/>
+<text x="550" y="309.0" class="label">80</text>
+<line x1="585" y1="249.3" x2="953" y2="249.3" class="grid"/>
+<text x="550" y="253.3" class="label">100</text>
+<line x1="585" y1="193.7" x2="953" y2="193.7" class="grid"/>
+<text x="550" y="197.7" class="label">120</text>
+<line x1="585" y1="138.0" x2="953" y2="138.0" class="grid"/>
+<text x="550" y="142.0" class="label">140</text>
+<polyline points="585.0,247.3 599.2,256.1 613.3,237.9 627.5,271.0 641.6,232.3 655.8,241.5 669.9,261.9 684.1,247.8 698.2,245.3 712.4,227.0 726.5,262.9 740.7,252.9 754.8,261.5 769.0,259.4 783.2,249.6 797.3,254.9 811.5,263.5 825.6,249.8 839.8,240.0 853.9,225.0 868.1,212.5 882.2,219.3 896.4,190.8 910.5,196.9 924.7,184.1 938.8,184.1 953.0,184.8" class="treated"/>
+<text x="790" y="123" class="label">treated: 屏東縣</text>
+<polyline points="585.0,269.8 599.2,238.3 613.3,257.1 627.5,242.3 641.6,259.6 655.8,265.2 669.9,253.4 684.1,274.9 698.2,229.9 712.4,269.0 726.5,276.7 740.7,288.0 754.8,287.4 769.0,265.0 783.2,260.8 797.3,253.2 811.5,243.2 825.6,242.2 839.8,234.2 853.9,237.3 868.1,244.4 882.2,216.9 896.4,204.0 910.5,187.2 924.7,188.8 938.8,168.8 953.0,161.8" class="control"/>
+<text x="790" y="141" class="label">matched: 雲林縣</text>
+<text x="613.3" y="328" text-anchor="middle" class="label">2000</text>
+<text x="726.5" y="328" text-anchor="middle" class="label">2008</text>
+<text x="839.8" y="328" text-anchor="middle" class="label">2016</text>
+<text x="953.0" y="328" text-anchor="middle" class="label">2024</text>
+<rect x="55" y="395" width="440" height="245" class="box"/>
+<text x="69" y="421" class="case">新竹縣</text>
+<line x1="100" y1="605.0" x2="468" y2="605.0" class="grid"/>
+<text x="65" y="609.0" class="label">90</text>
+<line x1="100" y1="557.3" x2="468" y2="557.3" class="grid"/>
+<text x="65" y="561.3" class="label">110</text>
+<line x1="100" y1="509.6" x2="468" y2="509.6" class="grid"/>
+<text x="65" y="513.6" class="label">130</text>
+<line x1="100" y1="461.9" x2="468" y2="461.9" class="grid"/>
+<text x="65" y="465.9" class="label">150</text>
+<polyline points="100.0,594.7 114.2,580.4 128.3,567.2 142.5,591.8 156.6,585.2 170.8,589.8 184.9,578.7 199.1,559.5 213.2,583.1 227.4,594.8 241.5,556.9 255.7,569.9 269.8,559.7 284.0,548.5 298.2,549.5 312.3,554.4 326.5,545.7 340.6,566.1 354.8,546.7 368.9,505.5 383.1,527.3 397.2,517.2 411.4,499.9 425.5,486.1 439.7,478.7 453.8,466.6 468.0,453.7" class="treated"/>
+<text x="305" y="423" class="label">treated: 新竹縣</text>
+<polyline points="100.0,583.1 114.2,584.6 128.3,574.4 142.5,589.8 156.6,575.7 170.8,580.8 184.9,571.8 199.1,574.3 213.2,575.4 227.4,569.8 241.5,580.7 255.7,585.5 269.8,591.8 284.0,580.2 298.2,569.0 312.3,563.9 326.5,548.6 340.6,552.4 354.8,549.1 368.9,544.4 383.1,538.4 397.2,534.1 411.4,525.3 425.5,523.2 439.7,522.2 453.8,515.1 468.0,510.8" class="control"/>
+<text x="305" y="441" class="label">matched: 桃園市</text>
+<text x="128.3" y="628" text-anchor="middle" class="label">2000</text>
+<text x="241.5" y="628" text-anchor="middle" class="label">2008</text>
+<text x="354.8" y="628" text-anchor="middle" class="label">2016</text>
+<text x="468.0" y="628" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="395" width="440" height="245" class="box"/>
+<text x="554" y="421" class="case">南投縣</text>
+<line x1="585" y1="605.0" x2="953" y2="605.0" class="grid"/>
+<text x="550" y="609.0" class="label">80</text>
+<line x1="585" y1="538.2" x2="953" y2="538.2" class="grid"/>
+<text x="550" y="542.2" class="label">100</text>
+<line x1="585" y1="471.4" x2="953" y2="471.4" class="grid"/>
+<text x="550" y="475.4" class="label">120</text>
+<polyline points="585.0,545.3 599.2,485.3 613.3,543.6 627.5,559.5 641.6,564.4 655.8,565.2 669.9,539.6 684.1,535.0 698.2,504.8 712.4,546.8 726.5,552.8 740.7,507.9 754.8,519.5 769.0,543.8 783.2,497.5 797.3,534.8 811.5,519.7 825.6,539.4 839.8,522.9 853.9,530.5 868.1,503.9 882.2,514.5 896.4,491.3 910.5,495.6 924.7,476.2 938.8,458.6 953.0,470.3" class="treated"/>
+<text x="790" y="423" class="label">treated: 南投縣</text>
+<polyline points="585.0,576.6 599.2,552.4 613.3,502.8 627.5,536.2 641.6,561.3 655.8,558.8 669.9,535.5 684.1,526.7 698.2,517.4 712.4,547.2 726.5,538.9 740.7,551.7 754.8,537.2 769.0,522.2 783.2,491.7 797.3,502.1 811.5,532.4 825.6,490.1 839.8,481.2 853.9,480.5 868.1,460.8 882.2,498.3 896.4,474.7 910.5,469.3 924.7,483.4 938.8,463.8 953.0,446.4" class="control"/>
+<text x="790" y="441" class="label">matched: 嘉義縣</text>
+<text x="613.3" y="628" text-anchor="middle" class="label">2000</text>
+<text x="726.5" y="628" text-anchor="middle" class="label">2008</text>
+<text x="839.8" y="628" text-anchor="middle" class="label">2016</text>
+<text x="953.0" y="628" text-anchor="middle" class="label">2024</text>
+<rect x="55" y="695" width="440" height="245" class="box"/>
+<text x="69" y="721" class="case">臺東縣</text>
+<line x1="100" y1="905.0" x2="468" y2="905.0" class="grid"/>
+<text x="65" y="909.0" class="label">90</text>
+<line x1="100" y1="821.5" x2="468" y2="821.5" class="grid"/>
+<text x="65" y="825.5" class="label">110</text>
+<line x1="100" y1="738.0" x2="468" y2="738.0" class="grid"/>
+<text x="65" y="742.0" class="label">130</text>
+<polyline points="100.0,904.3 114.2,896.1 128.3,851.3 142.5,860.9 156.6,844.6 170.8,865.7 184.9,857.8 199.1,880.7 213.2,862.3 227.4,798.3 241.5,888.0 255.7,833.8 269.8,900.1 284.0,873.7 298.2,832.1 312.3,827.8 326.5,813.7 340.6,854.8 354.8,829.0 368.9,777.0 383.1,777.7 397.2,780.7 411.4,768.7 425.5,756.7 439.7,758.6 453.8,752.1 468.0,756.6" class="treated"/>
+<text x="305" y="723" class="label">treated: 臺東縣</text>
+<polyline points="100.0,852.2 114.2,828.6 128.3,840.4 142.5,883.7 156.6,900.3 170.8,854.6 184.9,881.8 199.1,830.9 213.2,860.8 227.4,870.1 241.5,817.0 255.7,872.6 269.8,841.8 284.0,886.2 298.2,792.5 312.3,835.6 326.5,787.1 340.6,755.1 354.8,784.8 368.9,787.8 383.1,785.0 397.2,776.8 411.4,756.0 425.5,761.2 439.7,755.0 453.8,766.4 468.0,766.8" class="control"/>
+<text x="305" y="741" class="label">matched: 宜蘭縣</text>
+<text x="128.3" y="928" text-anchor="middle" class="label">2000</text>
+<text x="241.5" y="928" text-anchor="middle" class="label">2008</text>
+<text x="354.8" y="928" text-anchor="middle" class="label">2016</text>
+<text x="468.0" y="928" text-anchor="middle" class="label">2024</text>
+</svg>
+      <figcaption>Figure 3. Income index comparison for long-run single-party counties and matched counties (<strong>配對縣市</strong>).</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Interpretation</h2>
+    <p>The income and unemployment evidence does not support a broad claim that sharing the central ruling party systematically improves local economic development. The positive enterprise associations are worth investigating, but they rely on the shorter 2014-2024 growth window and may reflect policy channels, sectoral composition, metropolitan growth, or regional selection rather than a direct party-alignment effect.</p>
+    <p>A fair reading is therefore cautious: party alignment may matter for specific fiscal or administrative channels, but this dataset does not show a stable economy-wide payoff in household income or unemployment. This conclusion is deliberately symmetric across parties.</p>
+    <p>A stronger next version should add county mayor victory margins (<strong>縣市長勝選差距</strong>) from the Central Election Commission (<strong>中央選舉委員會</strong>) and central fiscal transfers (<strong>統籌分配稅款／中央補助款</strong>) from the National Treasury Administration. Those data would help distinguish whether any observed alignment effect works through central resource allocation rather than through local party governance itself.</p>
+  </section>
+
+  <section>
+    <h2>Terminology Glossary</h2>
+    <dl><dt>Central ruling party</dt><dd>中央執政黨</dd>
+<dt>Local ruling party / county or city mayor party</dt><dd>地方執政黨／縣市首長黨籍</dd>
+<dt>Central-local same party</dt><dd>中央地方同黨</dd>
+<dt>Disposable income</dt><dd>可支配所得</dd>
+<dt>County/city fixed effects</dt><dd>縣市固定效果</dd>
+<dt>Year fixed effects</dt><dd>年度固定效果</dd>
+<dt>Event study</dt><dd>事件研究</dd>
+<dt>Party alternation</dt><dd>政黨輪替</dd>
+<dt>Matched case comparison</dt><dd>配對案例比較</dd></dl>
+  </section>
+
+  <section>
+    <h2>Validation</h2>
+    <pre>研究資料檢核報告
+面板列數：540
+縣市數：20
+年度範圍：1998-2024
+所得非缺漏列：540
+失業率非缺漏列：540
+企業家數非缺漏列：228
+模型列數：25
+事件研究事件列數：289
+配對案例列數：270
+
+年度完整性：
+20 縣市 1998-2024 皆有面板列。
+
+黨籍抽查：臺北市 2015-2022 無黨籍；高雄市 2019-2020 中國國民黨；新竹市 2023 起台灣民眾黨。</pre>
+    <p class="note">Generated from <code>run_party_alignment_study.py</code> and <code>generate_html_report.py</code>. Source data files and intermediate CSV outputs are stored in the same workspace.</p>
+  </section>
+</main>
+</body>
+</html>

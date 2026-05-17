@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 import re
+from pathlib import Path
 
-with open('/Users/sousekilyu/Documents/Github/taiwan-political-research/docs/index.html', 'r') as f:
+DOCS_DIR = Path(__file__).resolve().parents[1]
+INDEX = DOCS_DIR / "index.html"
+
+with open(INDEX, 'r') as f:
     content = f.read()
 
 # === Edit A: Wrap Figure 1 (first margin:22px 0 div) ===
@@ -149,7 +153,7 @@ content = content.replace(
 )
 
 
-with open('/Users/sousekilyu/Documents/Github/taiwan-political-research/docs/index.html', 'w') as f:
+with open(INDEX, 'w') as f:
     f.write(content)
 
 print("✅ HTML edits applied successfully!")

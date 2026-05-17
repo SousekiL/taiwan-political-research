@@ -14,13 +14,14 @@ from scipy.optimize import minimize
 import warnings
 warnings.filterwarnings('ignore')
 
-RESULTDIR = Path("/Users/sousekilyu/Documents/Github/taiwan-political-research/results")
+DOCS_DIR = Path(__file__).resolve().parents[1]
+RESULTDIR = DOCS_DIR / "results"
 RESULTDIR.mkdir(exist_ok=True)
 
 # ============================================
 # 1. Load data
 # ============================================
-df = pd.read_csv("../data/merged_panel.csv")
+df = pd.read_csv(DOCS_DIR / "data" / "merged_panel.csv")
 print(f"Loaded: {len(df)} rows, {df['county'].nunique()} counties")
 print(f"Years: {df['year'].min()}-{df['year'].max()}")
 

@@ -32,8 +32,8 @@
 <rect x="130" y="146" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
 <text x="195" y="161" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
 <line x1="769.3" y1="160" x2="1007.7" y2="160" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
-<circle cx="1007.7" cy="160" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
-<text x="1020.7" y="165" text-anchor="start" class="small">+13.0 · Mod+</text>
+<circle cx="1007.7" cy="160" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="1020.7" y="165" text-anchor="start" class="small">+13.0 · Mixed</text>
 <text x="34" y="213" class="label">臺東縣</text>
 <rect x="130" y="194" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
 <text x="195" y="209" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
@@ -44,14 +44,14 @@
 <rect x="130" y="242" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
 <text x="195" y="257" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨15%</text>
 <line x1="769.3" y1="256" x2="712.7" y2="256" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
-<circle cx="712.7" cy="256" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
-<text x="699.7" y="261" text-anchor="end" class="small">-3.1 · Mixed</text>
+<circle cx="712.7" cy="256" r="9" fill="#b7791f" stroke="#fff" stroke-width="2"/>
+<text x="699.7" y="261" text-anchor="end" class="small">-3.1 · Mild-</text>
 <text x="34" y="309" class="label">臺北市</text>
 <rect x="130" y="290" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
 <text x="195" y="305" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨33%</text>
 <line x1="769.3" y1="304" x2="651.3" y2="304" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
-<circle cx="651.3" cy="304" r="9" fill="#c53030" stroke="#fff" stroke-width="2"/>
-<text x="638.3" y="309" text-anchor="end" class="small">-6.4 · Bad</text>
+<circle cx="651.3" cy="304" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="638.3" y="309" text-anchor="end" class="small">-6.4 · Mixed</text>
 <text x="34" y="357" class="label">南投縣</text>
 <rect x="130" y="338" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
 <text x="195" y="353" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
@@ -83,5 +83,5 @@
 <line x1="769.3" y1="544" x2="701.1" y2="544" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
 <circle cx="701.1" cy="544" r="9" fill="#b7791f" stroke="#fff" stroke-width="2"/>
 <text x="688.1" y="549" text-anchor="end" class="small">-3.7 · Mild-</text>
-<text x="32" y="675" class="small">Note: x-axis is Taiwan benchmark only; verdict also uses own rank, jobless, firms/sales, and matched gap.</text>
+<text x="32" y="675" class="small">Note: x-axis is Taiwan benchmark only; verdict uses jobless, firms/sales, and matched gap. Income band is shown as context only.</text>
 </svg>

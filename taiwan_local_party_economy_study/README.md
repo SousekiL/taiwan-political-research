@@ -1,4 +1,6 @@
-# 臺灣縣市所得成長與地方執政黨區塊圖
+# 臺灣縣市所得成長與地方執政黨研究
+
+本目錄是倉庫目前的主研究方案。發布版主報告位於 `../docs/index.html`，由本目錄的 `study_outputs/long_term_party_rule_case_report.html` 複製而來；中央地方同黨補充報告位於 `../docs/party_alignment_report.html`。
 
 本資料視覺化以行政院主計總處「家庭收支調查-平均每戶可支配所得按區域別分」作為地方所得面代理指標。主計總處目前不編製縣市別 GDP，因此本圖不是官方縣市 GDP 圖。
 

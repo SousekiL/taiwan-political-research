@@ -14,7 +14,8 @@ import time
 import re
 from pathlib import Path
 
-OUTDIR = Path("/Users/sousekilyu/Documents/Github/taiwan-political-research/data")
+DOCS_DIR = Path(__file__).resolve().parents[1]
+OUTDIR = DOCS_DIR / "data"
 OUTDIR.mkdir(exist_ok=True)
 
 # ============================================================

@@ -1,6 +1,6 @@
-# Long-Term Party Rule and Local Economic Development in Taiwan
+# Taiwan Local Party Economy Research
 
-A multi-method empirical study examining whether long-term single-party rule (≥70% of 1996–2024) affects county-level economic outcomes in Taiwan.
+Two parallel empirical research packages on Taiwan local political economy. The main package is `taiwan_local_party_economy_study`; the published HTML report remains under `docs/` for GitHub Pages.
 
 ## Quick Start
 
@@ -8,13 +8,12 @@ Open the report directly in your browser (no download needed):
 
 - **[View Report](https://sousekil.github.io/taiwan-political-research/)** ← GitHub Pages
 
-Or clone the repo and open `docs/index.html` locally.
+Or clone the repo and open `docs/index.html` locally. The supplemental alignment report is available at `docs/party_alignment_report.html`.
 
 ## Methods
 
-- **Synthetic Control Method** (SCM) — primary identification strategy
-- **Panel Fixed Effects** regression (county + year FE)
-- **Regression Discontinuity Design** — outlined for planned extension
+- **Main package:** case-focused dashboard, central-local party alignment models, event study, matched case comparisons, and long-run income-rank diagnostics.
+- **Secondary package:** earlier SCM / panel FE report on long-term single-party rule, preserved as a parallel implementation.
 
 ## Data Sources
 
@@ -24,36 +23,27 @@ Or clone the repo and open `docs/index.html` locally.
 
 ## Key Finding
 
-Party identity (DPP vs. KMT) has **no statistically significant effect** on county income levels (p = 0.77). Both parties have clear success cases and clear failure cases. The only political variable that consistently predicts better outcomes is **party alternation** (p = 0.046). Economic geography and connection to semiconductor supply chains are the dominant forces.
+The main report finds mixed outcomes under long-term dominant-party local rule. Party label alone does not explain development performance; local economic structure, industrial geography, central-local alignment channels, and political competition all require separate interpretation.
 
 ## Project Structure
 
 ```
 ├── docs/
-│   └── index.html                        # Self-contained HTML report (open in browser)
+│   ├── index.html                        # Main published report from taiwan_local_party_economy_study
+│   └── party_alignment_report.html       # Supplemental central-local alignment report
+├── taiwan_local_party_economy_study/     # Main research package
+│   ├── scripts/                          # Main data, model, chart, and report builders
+│   ├── data/                             # Main raw/intermediate data
+│   ├── outputs/                          # First-stage visualization outputs
+│   └── study_outputs/                    # Main generated reports, figures, and model outputs
+├── county_party_rule_panel_study/        # Secondary parallel package, previous main scheme
+│   ├── index.html
+│   ├── scripts/
+│   ├── data/
+│   └── results/
 ├── README.md                             # This file
 ├── PRINCIPLES.md                         # Full project standards & conventions
-├── .gitignore
-├── scripts/                              # All analysis scripts
-│   ├── fetch_data.py                     # Build economic panel from DGBAS data
-│   ├── build_election_data.py            # Build election panel from CEC data
-│   ├── run_analysis_v2.py                # SCM + panel FE + all figures
-│   ├── run_analysis.py                   # Earlier analysis version (reference)
-│   ├── make_dashboard.py                 # Summary dashboard chart (report header)
-│   ├── make_summary_chart.py             # Figure 1: excess growth bar chart
-│   ├── build_final_report.py             # Assemble final HTML report (OUTDATED — kept for reference)
-│   └── run_scm.R                         # R-based SCM implementation (alternative)
-├── data/                                 # CSV panel data
-│   ├── county_economic_panel.csv         # Economic indicators 1990–2024
-│   ├── county_election_panel.csv         # Party affiliations 1990–2024
-│   └── merged_panel.csv                  # Merged analysis panel
-└── results/                              # Generated figures & tables
-    ├── dashboard.png / .pdf              # Summary dashboard
-    ├── summary_conclusion.png / .pdf     # Figure 1: excess growth
-    ├── income_trajectories.png / .pdf    # Figure 2: income paths
-    ├── scm_effects_1996.png / .pdf       # Figure 3: SCM treatment effects
-    ├── *.csv                             # Output data tables
-    └── *.json                            # Analysis summary stats
+└── .gitignore
 ```
 
 ## Reproduction
@@ -61,11 +51,12 @@ Party identity (DPP vs. KMT) has **no statistically significant effect** on coun
 Raw data can be obtained from the public sources listed above.
 
 ```bash
-cd scripts
-python3 fetch_data.py             # build economic panel
-python3 build_election_data.py    # build election panel
-python3 run_analysis_v2.py        # SCM + panel FE + all charts
-python3 make_dashboard.py         # summary dashboard chart
+cd taiwan_local_party_economy_study
+python3 scripts/run_party_alignment_study.py
+python3 scripts/generate_html_report.py
+python3 scripts/generate_case_focused_report.py
+cp study_outputs/long_term_party_rule_case_report.html ../docs/index.html
+cp study_outputs/party_alignment_report.html ../docs/party_alignment_report.html
 ```
 
 ## Author
