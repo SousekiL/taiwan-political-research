@@ -6,7 +6,7 @@ A multi-method empirical study examining whether long-term single-party rule (‚â
 
 Open the report directly in your browser (no download needed):
 
-- **[Self-Contained HTML Report](https://cdn.jsdelivr.net/gh/SousekiL/taiwan-political-research@main/docs/index.html)** (`docs/index.html`)
+- **[View Report](https://sousekil.github.io/taiwan-political-research/)** ‚Üê GitHub Pages
 
 Or clone the repo and open `docs/index.html` locally.
 
