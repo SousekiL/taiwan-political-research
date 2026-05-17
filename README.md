@@ -4,7 +4,12 @@ A multi-method empirical study examining whether long-term single-party rule (â‰
 
 ## Quick Start
 
-Open `index.html` in any browser â€” a self-contained academic report with embedded charts.
+Open the report directly in your browser (no download needed):
+
+- **[Self-Contained HTML Report](https://cdn.jsdelivr.net/gh/SousekiL/taiwan-political-research@main/index.html)** (`index.html`)
+- **[Mirror Copy](https://cdn.jsdelivr.net/gh/SousekiL/taiwan-political-research@main/research-design-report.html)** (`research-design-report.html`)
+
+Or clone the repo and open `index.html` locally.
 
 ## Methods
 
