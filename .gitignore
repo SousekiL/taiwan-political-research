@@ -1,0 +1,18 @@
+# Data and generated results (large binary files)
+data/
+results/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# R files
+.Rhistory
+.RData
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
