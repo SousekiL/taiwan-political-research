@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Build the final compact academic report with embedded charts."""
+"""Build the final compact academic report with embedded charts.
+
+NOTE: This script is OUTDATED. The current docs/index.html was built manually
+and contains a dashboard chart that this script does not generate.
+Kept for reference only; to regenerate the report, update b64 filenames first.
+"""
 import base64
 from pathlib import Path
 

@@ -6,10 +6,9 @@ A multi-method empirical study examining whether long-term single-party rule (�
 
 Open the report directly in your browser (no download needed):
 
-- **[Self-Contained HTML Report](https://cdn.jsdelivr.net/gh/SousekiL/taiwan-political-research@main/index.html)** (`index.html`)
-- **[Mirror Copy](https://cdn.jsdelivr.net/gh/SousekiL/taiwan-political-research@main/research-design-report.html)** (`research-design-report.html`)
+- **[Self-Contained HTML Report](https://cdn.jsdelivr.net/gh/SousekiL/taiwan-political-research@main/docs/index.html)** (`docs/index.html`)
 
-Or clone the repo and open `index.html` locally.
+Or clone the repo and open `docs/index.html` locally.
 
 ## Methods
 
@@ -30,36 +29,36 @@ Party identity (DPP vs. KMT) has **no statistically significant effect** on coun
 ## Project Structure
 
 ```
-├── index.html                          # Self-contained report (open in browser)
-├── research-design-report.html         # Same as index.html (mirror)
-├── README.md                           # This file
-├── PRINCIPLES.md                       # Full project standards & conventions
+├── docs/
+│   └── index.html                        # Self-contained HTML report (open in browser)
+├── README.md                             # This file
+├── PRINCIPLES.md                         # Full project standards & conventions
 ├── .gitignore
-├── scripts/                            # All analysis scripts
-│   ├── fetch_data.py                   # Build economic panel from DGBAS data
-│   ├── build_election_data.py          # Build election panel from CEC data
-│   ├── run_analysis_v2.py              # SCM + panel FE + all figures
-│   ├── run_analysis.py                 # Earlier analysis version (reference)
-│   ├── make_dashboard.py               # Summary dashboard chart (report § header)
-│   ├── make_summary_chart.py           # Figure 1: excess growth bar chart
-│   ├── build_final_report.py           # Assemble final HTML report
-│   └── run_scm.R                       # R-based SCM implementation (alternative)
-├── data/                               # CSV panel data (not tracked)
-│   ├── county_economic_panel.csv       # Economic indicators 1990–2024
-│   ├── county_election_panel.csv       # Party affiliations 1990–2024
-│   └── merged_panel.csv                # Merged analysis panel
-└── results/                            # Generated figures & tables (not tracked)
-    ├── dashboard.png / .pdf            # Summary dashboard
-    ├── summary_conclusion.png / .pdf   # Figure 1: excess growth
-    ├── income_trajectories.png / .pdf  # Figure 2: income paths
-    ├── scm_effects_1996.png / .pdf     # Figure 3: SCM treatment effects
-    ├── *.csv                           # Output data tables
-    └── *.json                          # Analysis summary stats
+├── scripts/                              # All analysis scripts
+│   ├── fetch_data.py                     # Build economic panel from DGBAS data
+│   ├── build_election_data.py            # Build election panel from CEC data
+│   ├── run_analysis_v2.py                # SCM + panel FE + all figures
+│   ├── run_analysis.py                   # Earlier analysis version (reference)
+│   ├── make_dashboard.py                 # Summary dashboard chart (report header)
+│   ├── make_summary_chart.py             # Figure 1: excess growth bar chart
+│   ├── build_final_report.py             # Assemble final HTML report (OUTDATED — kept for reference)
+│   └── run_scm.R                         # R-based SCM implementation (alternative)
+├── data/                                 # CSV panel data
+│   ├── county_economic_panel.csv         # Economic indicators 1990–2024
+│   ├── county_election_panel.csv         # Party affiliations 1990–2024
+│   └── merged_panel.csv                  # Merged analysis panel
+└── results/                              # Generated figures & tables
+    ├── dashboard.png / .pdf              # Summary dashboard
+    ├── summary_conclusion.png / .pdf     # Figure 1: excess growth
+    ├── income_trajectories.png / .pdf    # Figure 2: income paths
+    ├── scm_effects_1996.png / .pdf       # Figure 3: SCM treatment effects
+    ├── *.csv                             # Output data tables
+    └── *.json                            # Analysis summary stats
 ```
 
 ## Reproduction
 
-Raw data can be obtained from the public sources listed above. The generated `data/` and `results/` directories are excluded from version control.
+Raw data can be obtained from the public sources listed above.
 
 ```bash
 cd scripts
@@ -67,7 +66,6 @@ python3 fetch_data.py             # build economic panel
 python3 build_election_data.py    # build election panel
 python3 run_analysis_v2.py        # SCM + panel FE + all charts
 python3 make_dashboard.py         # summary dashboard chart
-python3 build_final_report.py     # assemble final HTML report (requires charts)
 ```
 
 ## Author

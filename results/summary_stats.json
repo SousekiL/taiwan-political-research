@@ -1,0 +1,17 @@
+{
+  "analysis_period": "1996-2024",
+  "n_observations": 580,
+  "r_squared": 0.9889,
+  "dpp_coef": -0.0008,
+  "dpp_pvalue": 0.7098,
+  "dpp_significant": false,
+  "aligned_coef": 0.0038,
+  "aligned_pvalue": 0.0276,
+  "aligned_significant": true,
+  "alternation_coef": 0.0044,
+  "alternation_pvalue": 0.0178,
+  "alternation_significant": true,
+  "dpp_avg_rank_change": 0.3,
+  "kmt_avg_rank_change": -0.1,
+  "n_scm_cases": 8
+}
