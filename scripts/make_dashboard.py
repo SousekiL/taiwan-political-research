@@ -22,7 +22,7 @@ if font_path:
 plt.rcParams['axes.unicode_minus'] = False
 
 RESULTDIR = Path("/Users/sousekilyu/Documents/Github/taiwan-political-research/results")
-df = pd.read_csv("data/merged_panel.csv")
+df = pd.read_csv("../data/merged_panel.csv")
 for c in ['per_capita_income','log_income','unemployment_rate','population','tax_revenue_per_capita']:
     df[c] = pd.to_numeric(df[c], errors='coerce')
 df96 = df[(df['year'] >= 1996) & (df['year'] <= 2024)].copy()

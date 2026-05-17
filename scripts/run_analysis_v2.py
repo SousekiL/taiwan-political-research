@@ -48,7 +48,7 @@ RESULTDIR.mkdir(exist_ok=True)
 # ============================================================
 # 1. Load and prepare data
 # ============================================================
-df = pd.read_csv("data/merged_panel.csv")
+df = pd.read_csv("../data/merged_panel.csv")
 df['per_capita_income'] = pd.to_numeric(df['per_capita_income'], errors='coerce')
 df['log_income'] = pd.to_numeric(df['log_income'], errors='coerce')
 df['unemployment_rate'] = pd.to_numeric(df['unemployment_rate'], errors='coerce')
