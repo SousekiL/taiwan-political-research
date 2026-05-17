@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Long-Term Single-Party Local Rule and Economic Development in Taiwan</title>
+  <style>
+    :root { --ink:#111827; --muted:#475569; --line:#d8e1ec; --bg:#f8fafc; --blue:#1d4f91; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:white; }
+    main { max-width:1120px; margin:0 auto; padding:48px 28px 80px; }
+    h1 { font-size:42px; line-height:1.08; margin:0 0 12px; letter-spacing:0; }
+    h2 { font-size:26px; margin:34px 0 12px; border-top:1px solid var(--line); padding-top:26px; }
+    p, li { font-size:16px; line-height:1.65; }
+    .dek { color:var(--muted); font-size:18px; max-width:880px; }
+    .front { display:grid; grid-template-columns:1fr 1.2fr; gap:18px; margin-top:28px; }
+    .card { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:20px 22px; }
+    .card h2 { margin-top:0; border:0; padding-top:0; }
+    .finding { font-size:17px; line-height:1.58; }
+    .tag { display:inline-block; font-size:13px; background:#e8f0fb; color:#163d73; padding:4px 8px; border-radius:999px; margin-right:6px; }
+    table { border-collapse:collapse; width:100%; margin:14px 0 24px; font-size:14px; }
+    th,td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { background:#f1f5f9; font-weight:700; }
+    figure { margin:26px 0; border:1px solid var(--line); border-radius:12px; padding:16px; overflow:auto; background:#fff; }
+    figcaption { color:var(--muted); font-size:14px; line-height:1.5; margin-top:8px; }
+    .note { color:var(--muted); font-size:14px; }
+    pre { white-space:pre-wrap; background:#f8fafc; border:1px solid var(--line); padding:14px; border-radius:8px; }
+    @media(max-width:780px) { .front { grid-template-columns:1fr; } h1 { font-size:32px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Does Long-Term Single-Party Local Rule Help or Hurt Local Development?</h1>
+  <p class="dek">A case-focused, nonpartisan assessment of long-term dominant-party local rule (<strong>長期優勢政黨執政</strong>) in selected Taiwan counties and cities, including Taipei (<strong>臺北市</strong>), Kaohsiung (<strong>高雄市</strong>), Tainan (<strong>臺南市</strong>), Hualien (<strong>花蓮縣</strong>), Nantou (<strong>南投縣</strong>), and other long-dominant cases.</p>
+
+  <section class="front">
+    <div class="card">
+      <h2>Assumptions First</h2>
+      <ul>
+        <li>The central question is not “which party is better,” but whether a long period of single-party or dominant-party local rule (<strong>長期單一／優勢政黨執政</strong>) coincides with stronger or weaker local development.</li>
+        <li>“Development” is judged by three layers: each county/city's own long-run change (<strong>自身長期變化</strong>), a structurally similar matched comparison (<strong>對照縣市比較</strong>), and Taiwan-benchmark income growth (<strong>相對全國所得成長</strong>) to remove economy-wide cycles.</li>
+        <li>National income rank (<strong>所得全國排名</strong>) is treated as an explicit evaluation signal: a large rank drop is negative even if absolute income still rises.</li>
+        <li>These are case comparisons, not randomized experiments. A weak outcome under one party does not by itself prove that the party caused the weakness.</li>
+        <li>County GDP is not used because Taiwan's DGBAS does not compile county/city GDP.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Final Conclusions</h2>
+      <p class="finding"><span class="tag">Direct answer</span>Long-term dominant-party local rule has <strong>mixed results</strong>. It looks beneficial in cases such as Tainan, Hsinchu County, Miaoli, and Kaohsiung; clearly negative in Nantou; and weak or mixed in Taipei, Hualien, Pingtung, and Chiayi County.</p>
+      <p class="finding"><span class="tag">Taipei</span><strong>Clearly negative.</strong> Taipei remains wealthy, but from 1999 to 2024 its household income grew -6.4 pp slower than Taiwan overall and its income rank moved 1 → 2. Even allowing for its high starting point, long KMT-dominant rule does not look development-enhancing in this multi-indicator reading.</p>
+      <p class="finding"><span class="tag">Strong positives</span>Tainan is +4.5 pp, Hsinchu County is +15.5 pp, Miaoli is +13.0 pp, and Kaohsiung is +3.1 pp against the Taiwan benchmark.</p>
+      <p class="finding"><span class="tag">Weak cases</span>Nantou is the clearest negative case at -23.2 pp and rank 20/20. Hualien and Pingtung are milder weak cases; they do not show a strong growth payoff from long political continuity.</p>
+      <p class="finding"><span class="tag">Central-local alignment</span>When the central and local ruling parties differ, this dataset does <strong>not</strong> show a clear penalty for household income or unemployment. The full-panel same-party coefficient is 0.057 pp for income growth and 0.007 pp for unemployment, both substantively small.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>One-Chart Summary</h2>
+    <p>This dashboard is the fastest reading of the study. It combines the final verdict with the evidence behind it: the Taiwan-benchmark income gap, own income-rank movement, unemployment, enterprise activity, and matched comparison gap.</p>
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1390" role="img" aria-label="Long-term single-party rule conclusion dashboard">
+<style>
+        .title{font:700 30px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .sub{font:16px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .head{font:700 13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569;text-transform:uppercase;letter-spacing:.03em}
+        .case{font:700 22px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .txt{font:15px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#374151}
+        .small{font:13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .verdict{font:700 15px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .line{stroke:#d8e1ec;stroke-width:1}
+        .axis{stroke:#cbd5e1;stroke-width:1}
+        .zero{stroke:#64748b;stroke-width:2}
+        </style>
+<rect x="0" y="0" width="1180" height="1390" fill="#ffffff"/>
+<text x="32" y="44" class="title">Summary Dashboard</text>
+<text x="32" y="72" class="sub">結論總覽：Verdict color = final reading; party color = local rule profile.</text>
+<text x="34" y="104" class="head">Case</text>
+<text x="142" y="104" class="head">Rule mix</text>
+<text x="300" y="104" class="head">Verdict</text>
+<text x="475" y="104" class="head">TW gap</text>
+<text x="660" y="104" class="head">Rank</text>
+<text x="790" y="104" class="head">Jobless</text>
+<text x="920" y="104" class="head">Firms/Sales</text>
+<text x="1068" y="104" class="head">Match</text>
+<line x1="523.3" y1="110" x2="523.3" y2="1284" class="axis"/>
+<text x="523.3" y="1305" text-anchor="middle" class="small">-20</text>
+<line x1="559.9" y1="110" x2="559.9" y2="1284" class="axis"/>
+<text x="559.9" y="1305" text-anchor="middle" class="small">-10</text>
+<line x1="596.5" y1="110" x2="596.5" y2="1284" class="zero"/>
+<text x="596.5" y="1305" text-anchor="middle" class="small">+0</text>
+<line x1="633.0" y1="110" x2="633.0" y2="1284" class="axis"/>
+<text x="633.0" y="1305" text-anchor="middle" class="small">+10</text>
+<text x="475" y="1328" class="small">TW gap = Taiwan-benchmark income growth, pp</text>
+<line x1="28" y1="100" x2="1152" y2="100" class="line"/>
+<text x="34" y="144" class="case">臺北市</text>
+<text x="34" y="168" class="small">vs 高雄市</text>
+<rect x="142" y="120" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="174" y="137" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="174" y="162" text-anchor="middle" class="small">70.4%</text>
+<rect x="214" y="120" width="64" height="24" rx="12" fill="#7b818a" opacity="0.95"/>
+<text x="246" y="137" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">IND</text>
+<text x="246" y="162" text-anchor="middle" class="small">29.6%</text>
+<rect x="300" y="114" width="112" height="38" rx="10" fill="#fde2e2" stroke="#c53030" stroke-width="1.6"/>
+<text x="356" y="138" text-anchor="middle" class="verdict">Bad</text>
+<rect x="573.0" y="127" width="23.5" height="18" rx="3" fill="#c53030"/>
+<text x="565.0" y="142" text-anchor="end" class="txt">-6.4 pp</text>
+<text x="660" y="137" class="txt">1→2</text>
+<text x="660" y="161" class="small">fell; #16/20</text>
+<text x="790" y="137" class="txt">2.9% ↑ 3.5%</text>
+<circle cx="888" cy="132" r="5" fill="#c53030"/>
+<text x="920" y="137" class="txt">F 12.1%</text>
+<text x="920" y="161" class="small">S 36.8%</text>
+<text x="1068" y="137" class="txt">-17.1</text>
+<text x="1068" y="161" class="small" fill="#c53030">idx gap</text>
+<text x="300" y="187" class="small">Score -5; same-party 33%</text>
+<line x1="28" y1="218" x2="1152" y2="218" class="line"/>
+<text x="34" y="262" class="case">高雄市</text>
+<text x="34" y="286" class="small">vs 新北市</text>
+<rect x="142" y="238" width="64" height="24" rx="12" fill="#1f9d55" opacity="0.95"/>
+<text x="174" y="255" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP</text>
+<text x="174" y="280" text-anchor="middle" class="small">92.6%</text>
+<rect x="214" y="238" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="246" y="255" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="246" y="280" text-anchor="middle" class="small">7.4%</text>
+<rect x="300" y="232" width="112" height="38" rx="10" fill="#e8f1fb" stroke="#1d4f91" stroke-width="1.6"/>
+<text x="356" y="256" text-anchor="middle" class="verdict">Mod+</text>
+<rect x="596.5" y="245" width="11.3" height="18" rx="3" fill="#2f8f46"/>
+<text x="615.7" y="260" text-anchor="start" class="txt">+3.1 pp</text>
+<text x="660" y="255" class="txt">9→9</text>
+<text x="660" y="279" class="small">flat; #8/20</text>
+<text x="790" y="255" class="txt">3.8% ↓ 3.3%</text>
+<circle cx="888" cy="250" r="5" fill="#2f8f46"/>
+<text x="920" y="255" class="txt">F 22.5%</text>
+<text x="920" y="279" class="small">S 33.2%</text>
+<text x="1068" y="255" class="txt">+1.9</text>
+<text x="1068" y="279" class="small" fill="#64748b">idx gap</text>
+<text x="300" y="305" class="small">Score +3; same-party 56%</text>
+<line x1="28" y1="336" x2="1152" y2="336" class="line"/>
+<text x="34" y="380" class="case">臺南市</text>
+<text x="34" y="404" class="small">vs 花蓮縣</text>
+<rect x="142" y="356" width="64" height="24" rx="12" fill="#1f9d55" opacity="0.95"/>
+<text x="174" y="373" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP</text>
+<text x="174" y="398" text-anchor="middle" class="small">100.0%</text>
+<rect x="300" y="350" width="112" height="38" rx="10" fill="#dff4e5" stroke="#2f8f46" stroke-width="1.6"/>
+<text x="356" y="374" text-anchor="middle" class="verdict">Good</text>
+<rect x="596.5" y="363" width="16.6" height="18" rx="3" fill="#2f8f46"/>
+<text x="621.0" y="378" text-anchor="start" class="txt">+4.5 pp</text>
+<text x="660" y="373" class="txt">15→10</text>
+<text x="660" y="397" class="small">improved; #5/20</text>
+<text x="790" y="373" class="txt">4.3% ↓ 3.4%</text>
+<circle cx="888" cy="368" r="5" fill="#2f8f46"/>
+<text x="920" y="373" class="txt">F 24.6%</text>
+<text x="920" y="397" class="small">S 24.3%</text>
+<text x="1068" y="373" class="txt">+11.1</text>
+<text x="1068" y="397" class="small" fill="#2f8f46">idx gap</text>
+<text x="300" y="423" class="small">Score +6; same-party 63%</text>
+<line x1="28" y1="454" x2="1152" y2="454" class="line"/>
+<text x="34" y="498" class="case">花蓮縣</text>
+<text x="34" y="522" class="small">vs 宜蘭縣</text>
+<rect x="142" y="474" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="174" y="491" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="174" y="516" text-anchor="middle" class="small">66.7%</text>
+<rect x="214" y="474" width="64" height="24" rx="12" fill="#7b818a" opacity="0.95"/>
+<text x="246" y="491" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">IND</text>
+<text x="246" y="516" text-anchor="middle" class="small">33.3%</text>
+<rect x="300" y="468" width="112" height="38" rx="10" fill="#eef2f7" stroke="#64748b" stroke-width="1.6"/>
+<text x="356" y="492" text-anchor="middle" class="verdict">Mixed</text>
+<rect x="585.2" y="481" width="11.3" height="18" rx="3" fill="#b7791f"/>
+<text x="577.2" y="496" text-anchor="end" class="txt">-3.1 pp</text>
+<text x="660" y="491" class="txt">17→16</text>
+<text x="660" y="515" class="small">improved; #12/20</text>
+<text x="790" y="491" class="txt">3.7% ↓ 3.3%</text>
+<circle cx="888" cy="486" r="5" fill="#2f8f46"/>
+<text x="920" y="491" class="txt">F 20.1%</text>
+<text x="920" y="515" class="small">S 18.3%</text>
+<text x="1068" y="491" class="txt">+2.1</text>
+<text x="1068" y="515" class="small" fill="#64748b">idx gap</text>
+<text x="300" y="541" class="small">Score +0; same-party 15%</text>
+<line x1="28" y1="572" x2="1152" y2="572" class="line"/>
+<text x="34" y="616" class="case">南投縣</text>
+<text x="34" y="640" class="small">vs 嘉義縣</text>
+<rect x="142" y="592" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="174" y="609" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="174" y="634" text-anchor="middle" class="small">100.0%</text>
+<rect x="300" y="586" width="112" height="38" rx="10" fill="#fde2e2" stroke="#c53030" stroke-width="1.6"/>
+<text x="356" y="610" text-anchor="middle" class="verdict">Bad</text>
+<rect x="511.4" y="599" width="85.0" height="18" rx="3" fill="#c53030"/>
+<text x="503.4" y="614" text-anchor="end" class="txt">-23.2 pp</text>
+<text x="660" y="609" class="txt">8→17</text>
+<text x="660" y="633" class="small">fell; #20/20</text>
+<text x="790" y="609" class="txt">3.1% ↑ 3.3%</text>
+<circle cx="888" cy="604" r="5" fill="#c53030"/>
+<text x="920" y="609" class="txt">F 19.2%</text>
+<text x="920" y="633" class="small">S 34.7%</text>
+<text x="1068" y="609" class="txt">-7.1</text>
+<text x="1068" y="633" class="small" fill="#c53030">idx gap</text>
+<text x="300" y="659" class="small">Score -6; same-party 37%</text>
+<line x1="28" y1="690" x2="1152" y2="690" class="line"/>
+<text x="34" y="734" class="case">新竹縣</text>
+<text x="34" y="758" class="small">vs 屏東縣</text>
+<rect x="142" y="710" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="174" y="727" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="174" y="752" text-anchor="middle" class="small">100.0%</text>
+<rect x="300" y="704" width="112" height="38" rx="10" fill="#e8f1fb" stroke="#1d4f91" stroke-width="1.6"/>
+<text x="356" y="728" text-anchor="middle" class="verdict">Mod+</text>
+<rect x="596.5" y="717" width="56.5" height="18" rx="3" fill="#2f8f46"/>
+<text x="661.0" y="732" text-anchor="start" class="txt">+15.5 pp</text>
+<text x="660" y="727" class="txt">3→3</text>
+<text x="660" y="751" class="small">flat; #1/20</text>
+<text x="790" y="727" class="txt">1.8% ↑ 3.3%</text>
+<circle cx="888" cy="722" r="5" fill="#c53030"/>
+<text x="920" y="727" class="txt">F 37.3%</text>
+<text x="920" y="751" class="small">S 61.5%</text>
+<text x="1068" y="727" class="txt">+30.2</text>
+<text x="1068" y="751" class="small" fill="#2f8f46">idx gap</text>
+<text x="300" y="777" class="small">Score +3; same-party 37%</text>
+<line x1="28" y1="808" x2="1152" y2="808" class="line"/>
+<text x="34" y="852" class="case">臺東縣</text>
+<text x="34" y="876" class="small">vs 宜蘭縣</text>
+<rect x="142" y="828" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="174" y="845" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="174" y="870" text-anchor="middle" class="small">100.0%</text>
+<rect x="300" y="822" width="112" height="38" rx="10" fill="#eef2f7" stroke="#64748b" stroke-width="1.6"/>
+<text x="356" y="846" text-anchor="middle" class="verdict">Mixed</text>
+<rect x="596.5" y="835" width="14.3" height="18" rx="3" fill="#2f8f46"/>
+<text x="618.7" y="850" text-anchor="start" class="txt">+3.9 pp</text>
+<text x="660" y="845" class="txt">20→20</text>
+<text x="660" y="869" class="small">flat; #7/20</text>
+<text x="790" y="845" class="txt">2.8% ↑ 3.3%</text>
+<circle cx="888" cy="840" r="5" fill="#c53030"/>
+<text x="920" y="845" class="txt">F 23.9%</text>
+<text x="920" y="869" class="small">S 26.8%</text>
+<text x="1068" y="845" class="txt">+2.4</text>
+<text x="1068" y="869" class="small" fill="#64748b">idx gap</text>
+<text x="300" y="895" class="small">Score +1; same-party 37%</text>
+<line x1="28" y1="926" x2="1152" y2="926" class="line"/>
+<text x="34" y="970" class="case">屏東縣</text>
+<text x="34" y="994" class="small">vs 雲林縣</text>
+<rect x="142" y="946" width="64" height="24" rx="12" fill="#1f9d55" opacity="0.95"/>
+<text x="174" y="963" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP</text>
+<text x="174" y="988" text-anchor="middle" class="small">100.0%</text>
+<rect x="300" y="940" width="112" height="38" rx="10" fill="#fff4d6" stroke="#b7791f" stroke-width="1.6"/>
+<text x="356" y="964" text-anchor="middle" class="verdict">Mild-</text>
+<rect x="582.9" y="953" width="13.6" height="18" rx="3" fill="#b7791f"/>
+<text x="574.9" y="968" text-anchor="end" class="txt">-3.7 pp</text>
+<text x="660" y="963" class="txt">16→15</text>
+<text x="660" y="987" class="small">improved; #15/20</text>
+<text x="790" y="963" class="txt">2.2% ↑ 3.4%</text>
+<circle cx="888" cy="958" r="5" fill="#c53030"/>
+<text x="920" y="963" class="txt">F 24.3%</text>
+<text x="920" y="987" class="small">S 38.9%</text>
+<text x="1068" y="963" class="txt">-8.3</text>
+<text x="1068" y="987" class="small" fill="#c53030">idx gap</text>
+<text x="300" y="1013" class="small">Score -1; same-party 63%</text>
+<line x1="28" y1="1044" x2="1152" y2="1044" class="line"/>
+<text x="34" y="1088" class="case">苗栗縣</text>
+<text x="34" y="1112" class="small">vs 宜蘭縣</text>
+<rect x="142" y="1064" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="174" y="1081" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="174" y="1106" text-anchor="middle" class="small">92.6%</text>
+<rect x="214" y="1064" width="64" height="24" rx="12" fill="#7b818a" opacity="0.95"/>
+<text x="246" y="1081" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">IND</text>
+<text x="246" y="1106" text-anchor="middle" class="small">7.4%</text>
+<rect x="300" y="1058" width="112" height="38" rx="10" fill="#e8f1fb" stroke="#1d4f91" stroke-width="1.6"/>
+<text x="356" y="1082" text-anchor="middle" class="verdict">Mod+</text>
+<rect x="596.5" y="1071" width="47.5" height="18" rx="3" fill="#2f8f46"/>
+<text x="651.9" y="1086" text-anchor="start" class="txt">+13.0 pp</text>
+<text x="660" y="1081" class="txt">12→8</text>
+<text x="660" y="1105" class="small">improved; #3/20</text>
+<text x="790" y="1081" class="txt">2.2% ↑ 3.3%</text>
+<circle cx="888" cy="1076" r="5" fill="#c53030"/>
+<text x="920" y="1081" class="txt">F 21.0%</text>
+<text x="920" y="1105" class="small">S 26.9%</text>
+<text x="1068" y="1081" class="txt">+26.7</text>
+<text x="1068" y="1105" class="small" fill="#2f8f46">idx gap</text>
+<text x="300" y="1131" class="small">Score +3; same-party 37%</text>
+<line x1="28" y1="1162" x2="1152" y2="1162" class="line"/>
+<text x="34" y="1206" class="case">嘉義縣</text>
+<text x="34" y="1230" class="small">vs 雲林縣</text>
+<rect x="142" y="1182" width="64" height="24" rx="12" fill="#1f9d55" opacity="0.95"/>
+<text x="174" y="1199" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP</text>
+<text x="174" y="1224" text-anchor="middle" class="small">85.2%</text>
+<rect x="214" y="1182" width="64" height="24" rx="12" fill="#2563b8" opacity="0.95"/>
+<text x="246" y="1199" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT</text>
+<text x="246" y="1224" text-anchor="middle" class="small">14.8%</text>
+<rect x="300" y="1176" width="112" height="38" rx="10" fill="#eef2f7" stroke="#64748b" stroke-width="1.6"/>
+<text x="356" y="1200" text-anchor="middle" class="verdict">Mixed</text>
+<rect x="596.5" y="1189" width="5.8" height="18" rx="3" fill="#b7791f"/>
+<text x="610.3" y="1204" text-anchor="start" class="txt">+1.6 pp</text>
+<text x="660" y="1199" class="txt">18→18</text>
+<text x="660" y="1223" class="small">flat; #10/20</text>
+<text x="790" y="1199" class="txt">2.8% ↑ 3.4%</text>
+<circle cx="888" cy="1194" r="5" fill="#c53030"/>
+<text x="920" y="1199" class="txt">F 24.0%</text>
+<text x="920" y="1223" class="small">S 43.4%</text>
+<text x="1068" y="1199" class="txt">-4.0</text>
+<text x="1068" y="1223" class="small" fill="#c53030">idx gap</text>
+<text x="300" y="1249" class="small">Score +0; same-party 63%</text>
+</svg>
+      <figcaption>Figure 1. Summary dashboard. Verdict colors indicate the case-level conclusion, not a party preference. Party labels are shown only to describe the long-term local rule profile.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Dominant Party × Development Outcome</h2>
+    <p>This is the key visual answer to the party question. Blue cases are KMT-dominant; green cases are DPP-dominant. The chart shows that neither color is uniformly good or bad: both dominant-party groups contain stronger and weaker development cases.</p>
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 720" role="img" aria-label="Dominant party and development outcome matrix">
+<style>
+        .title{font:700 30px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .sub{font:16px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .head{font:700 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#374151}
+        .label{font:15px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .small{font:13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .grid{stroke:#d8e1ec;stroke-width:1}.zero{stroke:#64748b;stroke-width:2}
+        </style>
+<rect x="0" y="0" width="1180" height="720" fill="#fff"/>
+<text x="32" y="42" class="title">Party Dominance × Development Result</text>
+<text x="32" y="70" class="sub">政黨優勢 × 發展判讀：blue = KMT, green = DPP. Right = stronger vs. Taiwan benchmark.</text>
+<rect x="769.3" y="86" width="330.7" height="560" fill="#effaf2"/>
+<rect x="310" y="86" width="459.3" height="560" fill="#fff1f1"/>
+<line x1="401.9" y1="86" x2="401.9" y2="646" class="grid"/>
+<text x="401.9" y="675" text-anchor="middle" class="small">-20</text>
+<line x1="585.6" y1="86" x2="585.6" y2="646" class="grid"/>
+<text x="585.6" y="675" text-anchor="middle" class="small">-10</text>
+<line x1="769.3" y1="86" x2="769.3" y2="646" class="zero"/>
+<text x="769.3" y="675" text-anchor="middle" class="small">+0</text>
+<line x1="953.0" y1="86" x2="953.0" y2="646" class="grid"/>
+<text x="953.0" y="675" text-anchor="middle" class="small">+10</text>
+<text x="310" y="700" class="small">Cumulative excess household income growth, 1999-2024, pp (累積相對所得成長)</text>
+<text x="32" y="98" class="head">KMT dominant</text>
+<text x="34" y="117" class="label">新竹縣</text>
+<rect x="130" y="98" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="113" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="112" x2="1053.2" y2="112" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1053.2" cy="112" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
+<text x="1066.2" y="117" text-anchor="start" class="small">+15.5 · Mod+</text>
+<text x="34" y="165" class="label">苗栗縣</text>
+<rect x="130" y="146" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="161" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="160" x2="1007.7" y2="160" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1007.7" cy="160" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
+<text x="1020.7" y="165" text-anchor="start" class="small">+13.0 · Mod+</text>
+<text x="34" y="213" class="label">臺東縣</text>
+<rect x="130" y="194" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="209" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="208" x2="840.9" y2="208" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="840.9" cy="208" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="853.9" y="213" text-anchor="start" class="small">+3.9 · Mixed</text>
+<text x="34" y="261" class="label">花蓮縣</text>
+<rect x="130" y="242" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="257" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨15%</text>
+<line x1="769.3" y1="256" x2="712.7" y2="256" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="712.7" cy="256" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="699.7" y="261" text-anchor="end" class="small">-3.1 · Mixed</text>
+<text x="34" y="309" class="label">臺北市</text>
+<rect x="130" y="290" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="305" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨33%</text>
+<line x1="769.3" y1="304" x2="651.3" y2="304" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="651.3" cy="304" r="9" fill="#c53030" stroke="#fff" stroke-width="2"/>
+<text x="638.3" y="309" text-anchor="end" class="small">-6.4 · Bad</text>
+<text x="34" y="357" class="label">南投縣</text>
+<rect x="130" y="338" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="353" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="352" x2="342.4" y2="352" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="342.4" cy="352" r="9" fill="#c53030" stroke="#fff" stroke-width="2"/>
+<text x="329.4" y="357" text-anchor="end" class="small">-23.2 · Bad</text>
+<text x="32" y="386" class="head">DPP dominant</text>
+<text x="34" y="405" class="label">臺南市</text>
+<rect x="130" y="386" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="401" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨63%</text>
+<line x1="769.3" y1="400" x2="852.4" y2="400" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="852.4" cy="400" r="9" fill="#15803d" stroke="#fff" stroke-width="2"/>
+<text x="865.4" y="405" text-anchor="start" class="small">+4.5 · Good</text>
+<text x="34" y="453" class="label">高雄市</text>
+<rect x="130" y="434" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="449" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨56%</text>
+<line x1="769.3" y1="448" x2="825.8" y2="448" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="825.8" cy="448" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
+<text x="838.8" y="453" text-anchor="start" class="small">+3.1 · Mod+</text>
+<text x="34" y="501" class="label">嘉義縣</text>
+<rect x="130" y="482" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="497" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨63%</text>
+<line x1="769.3" y1="496" x2="798.4" y2="496" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="798.4" cy="496" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="811.4" y="501" text-anchor="start" class="small">+1.6 · Mixed</text>
+<text x="34" y="549" class="label">屏東縣</text>
+<rect x="130" y="530" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="545" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨63%</text>
+<line x1="769.3" y1="544" x2="701.1" y2="544" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="701.1" cy="544" r="9" fill="#b7791f" stroke="#fff" stroke-width="2"/>
+<text x="688.1" y="549" text-anchor="end" class="small">-3.7 · Mild-</text>
+<text x="32" y="675" class="small">Note: x-axis is Taiwan benchmark only; verdict also uses own rank, jobless, firms/sales, and matched gap.</text>
+</svg>
+      <figcaption>Figure 2. Dominant-party outcome matrix. The horizontal position is the Taiwan-benchmark income gap. Party color describes long-term local ruling profile; marker color gives the study's final development verdict.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Income Rank as a Development Standard</h2>
+    <p>The rank test asks a simple question: did the county/city move up or down among all Taiwan counties and cities in household disposable income? This is useful because a place can grow in absolute terms while losing relative position. In the scoring rule, a rank gain of three or more places is a strong positive signal; a rank loss of three or more places is a strong negative signal.</p>
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 700" role="img" aria-label="Income rank shift summary">
+<style>
+        .title{font:700 30px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .sub{font:16px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .head{font:700 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#374151}
+        .label{font:14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .small{font:12px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .grid{stroke:#d8e1ec;stroke-width:1}.axis{stroke:#94a3b8;stroke-width:2}
+        </style>
+<rect x="0" y="0" width="1180" height="700" fill="#fff"/>
+<text x="32" y="42" class="title">Income Rank Shift, 1999 → 2024</text>
+<text x="32" y="70" class="sub">所得全國排名變化：rank 1 is highest household disposable income. Downward rank number = better.</text>
+<line x1="380" y1="100" x2="380" y2="620" class="axis"/>
+<line x1="860" y1="100" x2="860" y2="620" class="axis"/>
+<text x="380" y="88" text-anchor="middle" class="head">1999</text>
+<text x="860" y="88" text-anchor="middle" class="head">2024</text>
+<line x1="354" y1="100.0" x2="886" y2="100.0" class="grid"/>
+<text x="342" y="104.0" text-anchor="end" class="small">#1</text>
+<text x="898" y="104.0" class="small">#1</text>
+<line x1="354" y1="209.5" x2="886" y2="209.5" class="grid"/>
+<text x="342" y="213.5" text-anchor="end" class="small">#5</text>
+<text x="898" y="213.5" class="small">#5</text>
+<line x1="354" y1="346.3" x2="886" y2="346.3" class="grid"/>
+<text x="342" y="350.3" text-anchor="end" class="small">#10</text>
+<text x="898" y="350.3" class="small">#10</text>
+<line x1="354" y1="483.2" x2="886" y2="483.2" class="grid"/>
+<text x="342" y="487.2" text-anchor="end" class="small">#15</text>
+<text x="898" y="487.2" class="small">#15</text>
+<line x1="354" y1="620.0" x2="886" y2="620.0" class="grid"/>
+<text x="342" y="624.0" text-anchor="end" class="small">#20</text>
+<text x="898" y="624.0" class="small">#20</text>
+<line x1="380" y1="483.2" x2="860" y2="346.3" stroke="#1f9d55" stroke-width="4" opacity=".78"/>
+<circle cx="380" cy="483.2" r="5" fill="#1f9d55"/>
+<circle cx="860" cy="346.3" r="5" fill="#1f9d55"/>
+<text x="914" y="350.3" class="label">臺南市 ↑5</text>
+<line x1="380" y1="401.1" x2="860" y2="291.6" stroke="#2563b8" stroke-width="4" opacity=".78"/>
+<circle cx="380" cy="401.1" r="5" fill="#2563b8"/>
+<circle cx="860" cy="291.6" r="5" fill="#2563b8"/>
+<text x="914" y="295.6" class="label">苗栗縣 ↑4</text>
+<line x1="380" y1="537.9" x2="860" y2="510.5" stroke="#2563b8" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="537.9" r="5" fill="#2563b8"/>
+<circle cx="860" cy="510.5" r="5" fill="#2563b8"/>
+<text x="914" y="514.5" class="label">花蓮縣 ↑1</text>
+<line x1="380" y1="510.5" x2="860" y2="483.2" stroke="#1f9d55" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="510.5" r="5" fill="#1f9d55"/>
+<circle cx="860" cy="483.2" r="5" fill="#1f9d55"/>
+<text x="914" y="487.2" class="label">屏東縣 ↑1</text>
+<line x1="380" y1="318.9" x2="860" y2="318.9" stroke="#1f9d55" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="318.9" r="5" fill="#1f9d55"/>
+<circle cx="860" cy="318.9" r="5" fill="#1f9d55"/>
+<text x="914" y="322.9" class="label">高雄市 →0</text>
+<line x1="380" y1="154.7" x2="860" y2="154.7" stroke="#2563b8" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="154.7" r="5" fill="#2563b8"/>
+<circle cx="860" cy="154.7" r="5" fill="#2563b8"/>
+<text x="914" y="158.7" class="label">新竹縣 →0</text>
+<line x1="380" y1="620.0" x2="860" y2="620.0" stroke="#2563b8" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="620.0" r="5" fill="#2563b8"/>
+<circle cx="860" cy="620.0" r="5" fill="#2563b8"/>
+<text x="914" y="624.0" class="label">臺東縣 →0</text>
+<line x1="380" y1="565.3" x2="860" y2="565.3" stroke="#1f9d55" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="565.3" r="5" fill="#1f9d55"/>
+<circle cx="860" cy="565.3" r="5" fill="#1f9d55"/>
+<text x="914" y="569.3" class="label">嘉義縣 →0</text>
+<line x1="380" y1="100.0" x2="860" y2="127.4" stroke="#2563b8" stroke-width="2.6" opacity=".78"/>
+<circle cx="380" cy="100.0" r="5" fill="#2563b8"/>
+<circle cx="860" cy="127.4" r="5" fill="#2563b8"/>
+<text x="914" y="131.4" class="label">臺北市 ↓1</text>
+<line x1="380" y1="291.6" x2="860" y2="537.9" stroke="#2563b8" stroke-width="4" opacity=".78"/>
+<circle cx="380" cy="291.6" r="5" fill="#2563b8"/>
+<circle cx="860" cy="537.9" r="5" fill="#2563b8"/>
+<text x="914" y="541.9" class="label">南投縣 ↓9</text>
+<text x="32" y="662" class="small">Color = long-term dominant local party. A line moving upward means the county/city gained national income-rank position.</text>
+</svg>
+      <figcaption>Figure 3. Income-rank slope chart. A line moving upward means the county/city gained national position; a line moving downward means it fell behind other counties/cities. Colors identify the long-term dominant local party, not a normative party judgment.</figcaption>
+    </figure>
+    <p>The period table below links rank changes to local ruling-party periods. It is descriptive: a rank drop during a party's tenure is evidence of relative underperformance during that period, but it still needs structural controls before being treated as party causation.</p>
+    <table><thead><tr><th>Case</th><th>Local party</th><th>Period</th><th>Income rank</th><th>Rank signal</th></tr></thead><tbody><tr><td>花蓮縣</td><td>IND</td><td>2010-2018</td><td>13 → 18</td><td>Fell 5</td></tr>
+<tr><td>苗栗縣</td><td>KMT</td><td>1998-2022</td><td>12 → 8</td><td>Improved 4</td></tr>
+<tr><td>臺南市</td><td>DPP</td><td>1998-2024</td><td>13 → 10</td><td>Improved 3</td></tr>
+<tr><td>南投縣</td><td>KMT</td><td>1998-2024</td><td>15 → 17</td><td>Fell 2</td></tr>
+<tr><td>花蓮縣</td><td>KMT</td><td>1998-2009</td><td>16 → 18</td><td>Fell 2</td></tr>
+<tr><td>高雄市</td><td>DPP</td><td>2021-2024</td><td>7 → 9</td><td>Fell 2</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Why Not Use Only the Taiwan Benchmark?</h2>
+    <p>Comparing each county/city with Taiwan overall is useful because it removes national business-cycle noise. But it is not enough for a fair case judgment. Taipei has a capital-city starting advantage, Hsinchu County benefits from the science-park and semiconductor cluster, Hualien faces geography and transport constraints, and Nantou's inland tourism/agriculture structure is different from the metropolitan counties. For that reason, the conclusion uses the Taiwan benchmark as one lens, then checks whether the county improved relative to itself and whether it outperformed a matched county/city with a different dominant-party profile.</p>
+  </section>
+
+  <section>
+    <h2>Case Scorecard</h2>
+    <p>The selected cases are counties/cities with long single-party or dominant-party local rule, plus Taipei because its political history is strongly KMT-dominant despite the independent-mayor period. The Taiwan-benchmark metric is cumulative excess log income growth from 1999 to 2024, but the final reading is deliberately not based on that alone. It also considers each place's own income-rank movement, unemployment, enterprise activity, and matched comparison performance.</p>
+    <table><thead><tr><th>Case (案例)</th><th>Local rule profile (地方執政概況)</th><th>Cumulative excess income growth, pp</th><th>Rank</th><th>Income rank</th><th>Unemployment</th><th>Enterprise count / sales growth, 2014-2024</th><th>Matched comparison, 2024 index gap</th><th>Same central-local party years</th><th>Reading</th></tr></thead><tbody><tr><td>臺北市</td><td>中國國民黨 70.4%; 無黨籍 29.6%</td><td>-6.4</td><td>16/20</td><td>1 → 2</td><td>2.9% → 3.5%</td><td>12.1% / 36.8%</td><td>高雄市 (-17.1)</td><td>33.3%</td><td>Clearly negative</td></tr>
+<tr><td>高雄市</td><td>民主進步黨 92.6%; 中國國民黨 7.4%</td><td>3.1</td><td>8/20</td><td>9 → 9</td><td>3.8% → 3.3%</td><td>22.5% / 33.2%</td><td>新北市 (+1.9)</td><td>55.6%</td><td>Moderately beneficial</td></tr>
+<tr><td>臺南市</td><td>民主進步黨 100.0%</td><td>4.5</td><td>5/20</td><td>15 → 10</td><td>4.3% → 3.4%</td><td>24.6% / 24.3%</td><td>花蓮縣 (+11.1)</td><td>63.0%</td><td>Beneficial overall</td></tr>
+<tr><td>花蓮縣</td><td>中國國民黨 66.7%; 無黨籍 33.3%</td><td>-3.1</td><td>12/20</td><td>17 → 16</td><td>3.7% → 3.3%</td><td>20.1% / 18.3%</td><td>宜蘭縣 (+2.1)</td><td>14.8%</td><td>Mixed or neutral</td></tr>
+<tr><td>南投縣</td><td>中國國民黨 100.0%</td><td>-23.2</td><td>20/20</td><td>8 → 17</td><td>3.1% → 3.3%</td><td>19.2% / 34.7%</td><td>嘉義縣 (-7.1)</td><td>37.0%</td><td>Clearly negative</td></tr>
+<tr><td>新竹縣</td><td>中國國民黨 100.0%</td><td>15.5</td><td>1/20</td><td>3 → 3</td><td>1.8% → 3.3%</td><td>37.3% / 61.5%</td><td>屏東縣 (+30.2)</td><td>37.0%</td><td>Moderately beneficial</td></tr>
+<tr><td>臺東縣</td><td>中國國民黨 100.0%</td><td>3.9</td><td>7/20</td><td>20 → 20</td><td>2.8% → 3.3%</td><td>23.9% / 26.8%</td><td>宜蘭縣 (+2.4)</td><td>37.0%</td><td>Mixed or neutral</td></tr>
+<tr><td>屏東縣</td><td>民主進步黨 100.0%</td><td>-3.7</td><td>15/20</td><td>16 → 15</td><td>2.2% → 3.4%</td><td>24.3% / 38.9%</td><td>雲林縣 (-8.3)</td><td>63.0%</td><td>Neutral to mildly negative</td></tr>
+<tr><td>苗栗縣</td><td>中國國民黨 92.6%; 無黨籍 7.4%</td><td>13.0</td><td>3/20</td><td>12 → 8</td><td>2.2% → 3.3%</td><td>21.0% / 26.9%</td><td>宜蘭縣 (+26.7)</td><td>37.0%</td><td>Moderately beneficial</td></tr>
+<tr><td>嘉義縣</td><td>民主進步黨 85.2%; 中國國民黨 14.8%</td><td>1.6</td><td>10/20</td><td>18 → 18</td><td>2.8% → 3.4%</td><td>24.0% / 43.4%</td><td>雲林縣 (-4.0)</td><td>63.0%</td><td>Mixed or neutral</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>How the Selected Cases Rank Nationally</h2>
+    <figure>
+      <svg viewBox="0 0 980 620" role="img" aria-label="Cumulative income excess growth ranking">
+<style>.title{font:700 24px system-ui,sans-serif;fill:#111827}.sub{font:15px system-ui,sans-serif;fill:#475569}.label{font:13px system-ui,sans-serif;fill:#374151}.grid{stroke:#e2e8f0}.zero{stroke:#64748b;stroke-width:2}.bar{fill:#94a3b8}.case{fill:#1d4f91}</style>
+<text x="24" y="34" class="title">1999-2024 Cumulative Excess Income Growth Ranking (累積相對所得成長排名)</text>
+<text x="24" y="58" class="sub">Positive values mean the county/city grew faster than Taiwan overall in log household disposable income.</text>
+<line x1="155.0" y1="70" x2="155.0" y2="570" class="grid"/>
+<text x="155.0" y="602" text-anchor="middle" class="label">-25</text>
+<line x1="245.7" y1="70" x2="245.7" y2="570" class="grid"/>
+<text x="245.7" y="602" text-anchor="middle" class="label">-20</text>
+<line x1="336.4" y1="70" x2="336.4" y2="570" class="grid"/>
+<text x="336.4" y="602" text-anchor="middle" class="label">-15</text>
+<line x1="427.1" y1="70" x2="427.1" y2="570" class="grid"/>
+<text x="427.1" y="602" text-anchor="middle" class="label">-10</text>
+<line x1="517.8" y1="70" x2="517.8" y2="570" class="grid"/>
+<text x="517.8" y="602" text-anchor="middle" class="label">-5</text>
+<line x1="608.5" y1="70" x2="608.5" y2="570" class="grid"/>
+<text x="608.5" y="602" text-anchor="middle" class="label">0</text>
+<line x1="699.2" y1="70" x2="699.2" y2="570" class="grid"/>
+<text x="699.2" y="602" text-anchor="middle" class="label">5</text>
+<line x1="789.9" y1="70" x2="789.9" y2="570" class="grid"/>
+<text x="789.9" y="602" text-anchor="middle" class="label">10</text>
+<line x1="880.6" y1="70" x2="880.6" y2="570" class="grid"/>
+<text x="880.6" y="602" text-anchor="middle" class="label">15</text>
+<line x1="608.5" y1="70" x2="608.5" y2="570" class="zero"/>
+<rect x="187.0" y="74.0" width="421.5" height="17.0" class="case"/>
+<text x="143" y="89.0" text-anchor="end" class="label">南投縣</text>
+<text x="182.0" y="89.0" text-anchor="end" class="label">-23.2</text>
+<rect x="219.8" y="99.0" width="388.7" height="17.0" class="bar"/>
+<text x="143" y="114.0" text-anchor="end" class="label">基隆市</text>
+<text x="214.8" y="114.0" text-anchor="end" class="label">-21.4</text>
+<rect x="350.1" y="124.0" width="258.4" height="17.0" class="bar"/>
+<text x="143" y="139.0" text-anchor="end" class="label">宜蘭縣</text>
+<text x="345.1" y="139.0" text-anchor="end" class="label">-14.2</text>
+<rect x="471.7" y="149.0" width="136.8" height="17.0" class="bar"/>
+<text x="143" y="164.0" text-anchor="end" class="label">彰化縣</text>
+<text x="466.7" y="164.0" text-anchor="end" class="label">-7.5</text>
+<rect x="492.0" y="174.0" width="116.5" height="17.0" class="case"/>
+<text x="143" y="189.0" text-anchor="end" class="label">臺北市</text>
+<text x="487.0" y="189.0" text-anchor="end" class="label">-6.4</text>
+<rect x="541.2" y="199.0" width="67.3" height="17.0" class="case"/>
+<text x="143" y="214.0" text-anchor="end" class="label">屏東縣</text>
+<text x="536.2" y="214.0" text-anchor="end" class="label">-3.7</text>
+<rect x="543.6" y="224.0" width="64.8" height="17.0" class="bar"/>
+<text x="143" y="239.0" text-anchor="end" class="label">雲林縣</text>
+<text x="538.6" y="239.0" text-anchor="end" class="label">-3.6</text>
+<rect x="545.1" y="249.0" width="63.4" height="17.0" class="bar"/>
+<text x="143" y="264.0" text-anchor="end" class="label">臺中市</text>
+<text x="540.1" y="264.0" text-anchor="end" class="label">-3.5</text>
+<rect x="552.6" y="274.0" width="55.9" height="17.0" class="case"/>
+<text x="143" y="289.0" text-anchor="end" class="label">花蓮縣</text>
+<text x="547.6" y="289.0" text-anchor="end" class="label">-3.1</text>
+<rect x="608.5" y="299.0" width="4.5" height="17.0" class="bar"/>
+<text x="143" y="314.0" text-anchor="end" class="label">桃園市</text>
+<text x="618.0" y="314.0" text-anchor="start" class="label">0.3</text>
+<rect x="608.5" y="324.0" width="28.7" height="17.0" class="case"/>
+<text x="143" y="339.0" text-anchor="end" class="label">嘉義縣</text>
+<text x="642.2" y="339.0" text-anchor="start" class="label">1.6</text>
+<rect x="608.5" y="349.0" width="49.9" height="17.0" class="bar"/>
+<text x="143" y="364.0" text-anchor="end" class="label">澎湖縣</text>
+<text x="663.4" y="364.0" text-anchor="start" class="label">2.8</text>
+<rect x="608.5" y="374.0" width="55.8" height="17.0" class="case"/>
+<text x="143" y="389.0" text-anchor="end" class="label">高雄市</text>
+<text x="669.3" y="389.0" text-anchor="start" class="label">3.1</text>
+<rect x="608.5" y="399.0" width="70.7" height="17.0" class="case"/>
+<text x="143" y="414.0" text-anchor="end" class="label">臺東縣</text>
+<text x="684.2" y="414.0" text-anchor="start" class="label">3.9</text>
+<rect x="608.5" y="424.0" width="74.7" height="17.0" class="bar"/>
+<text x="143" y="439.0" text-anchor="end" class="label">新北市</text>
+<text x="688.2" y="439.0" text-anchor="start" class="label">4.1</text>
+<rect x="608.5" y="449.0" width="82.1" height="17.0" class="case"/>
+<text x="143" y="464.0" text-anchor="end" class="label">臺南市</text>
+<text x="695.6" y="464.0" text-anchor="start" class="label">4.5</text>
+<rect x="608.5" y="474.0" width="229.3" height="17.0" class="bar"/>
+<text x="143" y="489.0" text-anchor="end" class="label">新竹市</text>
+<text x="842.8" y="489.0" text-anchor="start" class="label">12.6</text>
+<rect x="608.5" y="499.0" width="235.4" height="17.0" class="case"/>
+<text x="143" y="514.0" text-anchor="end" class="label">苗栗縣</text>
+<text x="848.9" y="514.0" text-anchor="start" class="label">13.0</text>
+<rect x="608.5" y="524.0" width="273.0" height="17.0" class="bar"/>
+<text x="143" y="539.0" text-anchor="end" class="label">嘉義市</text>
+<text x="886.5" y="539.0" text-anchor="start" class="label">15.0</text>
+<rect x="608.5" y="549.0" width="280.3" height="17.0" class="case"/>
+<text x="143" y="564.0" text-anchor="end" class="label">新竹縣</text>
+<text x="893.8" y="564.0" text-anchor="start" class="label">15.5</text>
+</svg>
+      <figcaption>Figure 4. Cumulative excess household disposable income growth (<strong>累積相對所得成長</strong>) for all 20 counties/cities. The selected long-dominant cases are highlighted.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Matched Case Comparisons</h2>
+    <p>The matched comparison is descriptive. It asks whether the focus county's income index rose faster than a plausible comparison county, not whether the ruling party caused the difference.</p>
+    <figure>
+      <svg viewBox="0 0 1000 1905" role="img" aria-label="Case matched income lines">
+<style>.title{font:700 24px system-ui,sans-serif;fill:#111827}.sub{font:15px system-ui,sans-serif;fill:#475569}.caseTitle{font:700 17px system-ui,sans-serif;fill:#111827}.label{font:13px system-ui,sans-serif;fill:#475569}.grid{stroke:#e2e8f0}.box{fill:#fff;stroke:#cbd5e1}.treated{fill:none;stroke:#1d4f91;stroke-width:3}.matched{fill:none;stroke:#b4532a;stroke-width:3}</style>
+<text x="24" y="34" class="title">Case Counties vs. Matched Comparison Counties (案例縣市與對照縣市)</text>
+<text x="24" y="58" class="sub">Income index: 1999-2002 average = 100 (所得指數).</text>
+<rect x="55" y="100" width="440" height="300" class="box"/>
+<text x="69" y="127" class="caseTitle">臺北市 vs. 高雄市</text>
+<line x1="107" y1="360.0" x2="461" y2="360.0" class="grid"/>
+<text x="67" y="364.0" class="label">90</text>
+<line x1="107" y1="275.2" x2="461" y2="275.2" class="grid"/>
+<text x="67" y="279.2" class="label">110</text>
+<line x1="107" y1="190.4" x2="461" y2="190.4" class="grid"/>
+<text x="67" y="194.4" class="label">130</text>
+<polyline points="107.0,327.3 120.6,323.0 134.2,312.9 147.8,319.8 161.5,314.8 175.1,314.8 188.7,317.3 202.3,313.5 215.9,304.4 229.5,295.6 243.2,301.4 256.8,309.9 270.4,291.8 284.0,308.1 297.6,298.9 311.2,298.5 324.8,293.9 338.5,286.5 352.1,284.1 365.7,275.9 379.3,263.9 392.9,248.9 406.5,248.8 420.2,246.1 433.8,241.4 447.4,240.0 461.0,227.1" class="treated"/>
+<text x="349.0" y="220.1" class="label">臺北市: 121.3</text>
+<polyline points="107.0,314.5 120.6,307.1 134.2,312.7 147.8,320.3 161.5,330.3 175.1,329.6 188.7,309.4 202.3,298.5 215.9,305.9 229.5,279.6 243.2,287.4 256.8,295.2 270.4,293.3 284.0,302.0 297.6,282.6 311.2,271.8 324.8,270.5 338.5,255.5 352.1,246.7 365.7,235.7 379.3,226.6 392.9,220.6 406.5,219.1 420.2,216.8 433.8,210.1 447.4,181.5 461.0,154.4" class="matched"/>
+<text x="349.0" y="168.4" class="label">高雄市: 138.5</text>
+<text x="134.2" y="387" text-anchor="middle" class="label">2000</text>
+<text x="243.2" y="387" text-anchor="middle" class="label">2008</text>
+<text x="352.1" y="387" text-anchor="middle" class="label">2016</text>
+<text x="461.0" y="387" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="100" width="440" height="300" class="box"/>
+<text x="554" y="127" class="caseTitle">高雄市 vs. 新北市</text>
+<line x1="592" y1="360.0" x2="946" y2="360.0" class="grid"/>
+<text x="552" y="364.0" class="label">90</text>
+<line x1="592" y1="275.2" x2="946" y2="275.2" class="grid"/>
+<text x="552" y="279.2" class="label">110</text>
+<line x1="592" y1="190.4" x2="946" y2="190.4" class="grid"/>
+<text x="552" y="194.4" class="label">130</text>
+<polyline points="592.0,314.5 605.6,307.1 619.2,312.7 632.8,320.3 646.5,330.3 660.1,329.6 673.7,309.4 687.3,298.5 700.9,305.9 714.5,279.6 728.2,287.4 741.8,295.2 755.4,293.3 769.0,302.0 782.6,282.6 796.2,271.8 809.8,270.5 823.5,255.5 837.1,246.7 850.7,235.7 864.3,226.6 877.9,220.6 891.5,219.1 905.2,216.8 918.8,210.1 932.4,181.5 946.0,154.4" class="treated"/>
+<text x="834.0" y="147.4" class="label">高雄市: 138.5</text>
+<polyline points="592.0,325.7 605.6,317.7 619.2,322.5 632.8,316.0 646.5,314.2 660.1,311.8 673.7,305.6 687.3,298.0 700.9,299.9 714.5,308.1 728.2,280.0 741.8,303.4 755.4,317.1 769.0,301.4 782.6,308.6 796.2,299.4 809.8,291.6 823.5,286.0 837.1,261.5 850.7,244.6 864.3,233.8 877.9,218.1 891.5,202.7 905.2,194.9 918.8,181.4 932.4,173.7 946.0,162.7" class="matched"/>
+<text x="834.0" y="176.7" class="label">新北市: 136.5</text>
+<text x="619.2" y="387" text-anchor="middle" class="label">2000</text>
+<text x="728.2" y="387" text-anchor="middle" class="label">2008</text>
+<text x="837.1" y="387" text-anchor="middle" class="label">2016</text>
+<text x="946.0" y="387" text-anchor="middle" class="label">2024</text>
+<rect x="55" y="455" width="440" height="300" class="box"/>
+<text x="69" y="482" class="caseTitle">臺南市 vs. 花蓮縣</text>
+<line x1="107" y1="715.0" x2="461" y2="715.0" class="grid"/>
+<text x="67" y="719.0" class="label">90</text>
+<line x1="107" y1="630.2" x2="461" y2="630.2" class="grid"/>
+<text x="67" y="634.2" class="label">110</text>
+<line x1="107" y1="545.4" x2="461" y2="545.4" class="grid"/>
+<text x="67" y="549.4" class="label">130</text>
+<polyline points="107.0,670.6 120.6,675.2 134.2,659.7 147.8,686.0 161.5,669.5 175.1,646.3 188.7,645.8 202.3,674.8 215.9,643.8 229.5,629.7 243.2,633.1 256.8,655.5 270.4,672.8 284.0,648.4 297.6,655.9 311.2,621.4 324.8,621.7 338.5,617.4 352.1,590.5 365.7,580.2 379.3,582.2 392.9,579.3 406.5,579.2 420.2,567.4 433.8,557.6 447.4,540.9 461.0,518.8" class="treated"/>
+<text x="349.0" y="511.8" class="label">臺南市: 136.3</text>
+<polyline points="107.0,674.3 120.6,678.9 134.2,660.8 147.8,659.1 161.5,691.6 175.1,667.3 188.7,676.7 202.3,707.3 215.9,669.9 229.5,670.9 243.2,688.3 256.8,711.4 270.4,661.1 284.0,651.9 297.6,649.2 311.2,632.3 324.8,676.3 338.5,645.1 352.1,637.0 365.7,654.6 379.3,633.0 392.9,620.9 406.5,583.6 420.2,585.0 433.8,591.6 447.4,586.3 461.0,565.7" class="matched"/>
+<text x="349.0" y="579.7" class="label">花蓮縣: 125.2</text>
+<text x="134.2" y="742" text-anchor="middle" class="label">2000</text>
+<text x="243.2" y="742" text-anchor="middle" class="label">2008</text>
+<text x="352.1" y="742" text-anchor="middle" class="label">2016</text>
+<text x="461.0" y="742" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="455" width="440" height="300" class="box"/>
+<text x="554" y="482" class="caseTitle">花蓮縣 vs. 宜蘭縣</text>
+<line x1="592" y1="715.0" x2="946" y2="715.0" class="grid"/>
+<text x="552" y="719.0" class="label">90</text>
+<line x1="592" y1="609.0" x2="946" y2="609.0" class="grid"/>
+<text x="552" y="613.0" class="label">110</text>
+<line x1="592" y1="503.0" x2="946" y2="503.0" class="grid"/>
+<text x="552" y="507.0" class="label">130</text>
+<polyline points="592.0,664.1 605.6,669.8 619.2,647.2 632.8,645.2 646.5,685.8 660.1,655.4 673.7,667.1 687.3,705.3 700.9,658.7 714.5,659.8 728.2,681.6 741.8,710.5 755.4,647.7 769.0,636.1 782.6,632.7 796.2,611.6 809.8,666.6 823.5,627.6 837.1,617.5 850.7,639.5 864.3,612.6 877.9,597.4 891.5,550.7 905.2,552.5 918.8,560.7 932.4,554.2 946.0,528.4" class="treated"/>
+<text x="834.0" y="521.4" class="label">花蓮縣: 125.2</text>
+<polyline points="592.0,648.0 605.6,618.0 619.2,633.0 632.8,688.0 646.5,709.0 660.1,651.0 673.7,685.6 687.3,620.9 700.9,658.8 714.5,670.6 728.2,603.2 741.8,673.8 755.4,634.8 769.0,691.1 782.6,572.1 796.2,626.9 809.8,565.3 823.5,524.7 837.1,562.4 850.7,566.3 864.3,562.7 877.9,552.2 891.5,525.9 905.2,532.5 918.8,524.6 932.4,539.1 946.0,539.6" class="matched"/>
+<text x="834.0" y="553.6" class="label">宜蘭縣: 123.1</text>
+<text x="619.2" y="742" text-anchor="middle" class="label">2000</text>
+<text x="728.2" y="742" text-anchor="middle" class="label">2008</text>
+<text x="837.1" y="742" text-anchor="middle" class="label">2016</text>
+<text x="946.0" y="742" text-anchor="middle" class="label">2024</text>
+<rect x="55" y="810" width="440" height="300" class="box"/>
+<text x="69" y="837" class="caseTitle">南投縣 vs. 嘉義縣</text>
+<line x1="107" y1="1070.0" x2="461" y2="1070.0" class="grid"/>
+<text x="67" y="1074.0" class="label">80</text>
+<line x1="107" y1="985.2" x2="461" y2="985.2" class="grid"/>
+<text x="67" y="989.2" class="label">100</text>
+<line x1="107" y1="900.4" x2="461" y2="900.4" class="grid"/>
+<text x="67" y="904.4" class="label">120</text>
+<polyline points="107.0,994.2 120.6,918.1 134.2,992.0 147.8,1012.3 161.5,1018.4 175.1,1019.4 188.7,986.9 202.3,981.2 215.9,942.8 229.5,996.2 243.2,1003.8 256.8,946.7 270.4,961.5 284.0,992.3 297.6,933.5 311.2,980.9 324.8,961.7 338.5,986.7 352.1,965.8 365.7,975.5 379.3,941.7 392.9,955.1 406.5,925.6 420.2,931.1 433.8,906.5 447.4,884.1 461.0,899.0" class="treated"/>
+<text x="349.0" y="892.0" class="label">南投縣: 120.3</text>
+<polyline points="107.0,1034.0 120.6,1003.2 134.2,940.3 147.8,982.7 161.5,1014.6 175.1,1011.4 188.7,981.8 202.3,970.6 215.9,958.8 229.5,996.6 243.2,986.1 256.8,1002.3 270.4,983.9 284.0,964.9 297.6,926.1 311.2,939.4 324.8,977.8 338.5,924.1 352.1,912.8 365.7,911.9 379.3,887.0 392.9,934.6 406.5,904.6 420.2,897.7 433.8,915.6 447.4,890.8 461.0,868.7" class="matched"/>
+<text x="349.0" y="882.7" class="label">嘉義縣: 127.5</text>
+<text x="134.2" y="1097" text-anchor="middle" class="label">2000</text>
+<text x="243.2" y="1097" text-anchor="middle" class="label">2008</text>
+<text x="352.1" y="1097" text-anchor="middle" class="label">2016</text>
+<text x="461.0" y="1097" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="810" width="440" height="300" class="box"/>
+<text x="554" y="837" class="caseTitle">新竹縣 vs. 屏東縣</text>
+<line x1="592" y1="1070.0" x2="946" y2="1070.0" class="grid"/>
+<text x="552" y="1074.0" class="label">90</text>
+<line x1="592" y1="1009.4" x2="946" y2="1009.4" class="grid"/>
+<text x="552" y="1013.4" class="label">110</text>
+<line x1="592" y1="948.9" x2="946" y2="948.9" class="grid"/>
+<text x="552" y="952.9" class="label">130</text>
+<line x1="592" y1="888.3" x2="946" y2="888.3" class="grid"/>
+<text x="552" y="892.3" class="label">150</text>
+<polyline points="592.0,1056.9 605.6,1038.8 619.2,1022.1 632.8,1053.2 646.5,1044.8 660.1,1050.7 673.7,1036.7 687.3,1012.3 700.9,1042.2 714.5,1057.1 728.2,1008.9 741.8,1025.5 755.4,1012.4 769.0,998.2 782.6,999.5 796.2,1005.8 809.8,994.8 823.5,1020.7 837.1,996.0 850.7,943.7 864.3,971.4 877.9,958.5 891.5,936.6 905.2,919.1 918.8,909.7 932.4,894.3 946.0,877.9" class="treated"/>
+<text x="834.0" y="870.9" class="label">新竹縣: 153.4</text>
+<polyline points="592.0,1037.5 605.6,1047.1 619.2,1027.3 632.8,1063.2 646.5,1021.2 660.1,1031.2 673.7,1053.3 687.3,1038.0 700.9,1035.3 714.5,1015.4 728.2,1054.4 741.8,1043.6 755.4,1053.0 769.0,1050.7 782.6,1040.0 796.2,1045.8 809.8,1055.1 823.5,1040.3 837.1,1029.6 850.7,1013.2 864.3,999.6 877.9,1007.0 891.5,976.0 905.2,982.6 918.8,968.7 932.4,968.7 946.0,969.5" class="matched"/>
+<text x="834.0" y="983.5" class="label">屏東縣: 123.2</text>
+<text x="619.2" y="1097" text-anchor="middle" class="label">2000</text>
+<text x="728.2" y="1097" text-anchor="middle" class="label">2008</text>
+<text x="837.1" y="1097" text-anchor="middle" class="label">2016</text>
+<text x="946.0" y="1097" text-anchor="middle" class="label">2024</text>
+<rect x="55" y="1165" width="440" height="300" class="box"/>
+<text x="69" y="1192" class="caseTitle">臺東縣 vs. 宜蘭縣</text>
+<line x1="107" y1="1425.0" x2="461" y2="1425.0" class="grid"/>
+<text x="67" y="1429.0" class="label">90</text>
+<line x1="107" y1="1319.0" x2="461" y2="1319.0" class="grid"/>
+<text x="67" y="1323.0" class="label">110</text>
+<line x1="107" y1="1213.0" x2="461" y2="1213.0" class="grid"/>
+<text x="67" y="1217.0" class="label">130</text>
+<polyline points="107.0,1424.1 120.6,1413.7 134.2,1356.9 147.8,1369.0 161.5,1348.4 175.1,1375.2 188.7,1365.0 202.3,1394.2 215.9,1370.8 229.5,1289.6 243.2,1403.5 256.8,1334.6 270.4,1418.8 284.0,1385.3 297.6,1332.5 311.2,1327.0 324.8,1309.1 338.5,1361.2 352.1,1328.5 365.7,1262.5 379.3,1263.4 392.9,1267.2 406.5,1252.0 420.2,1236.7 433.8,1239.1 447.4,1230.9 461.0,1236.6" class="treated"/>
+<text x="349.0" y="1229.6" class="label">臺東縣: 125.5</text>
+<polyline points="107.0,1358.0 120.6,1328.0 134.2,1343.0 147.8,1398.0 161.5,1419.0 175.1,1361.0 188.7,1395.6 202.3,1330.9 215.9,1368.8 229.5,1380.6 243.2,1313.2 256.8,1383.8 270.4,1344.8 284.0,1401.1 297.6,1282.1 311.2,1336.9 324.8,1275.3 338.5,1234.7 352.1,1272.4 365.7,1276.3 379.3,1272.7 392.9,1262.2 406.5,1235.9 420.2,1242.5 433.8,1234.6 447.4,1249.1 461.0,1249.6" class="matched"/>
+<text x="349.0" y="1263.6" class="label">宜蘭縣: 123.1</text>
+<text x="134.2" y="1452" text-anchor="middle" class="label">2000</text>
+<text x="243.2" y="1452" text-anchor="middle" class="label">2008</text>
+<text x="352.1" y="1452" text-anchor="middle" class="label">2016</text>
+<text x="461.0" y="1452" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="1165" width="440" height="300" class="box"/>
+<text x="554" y="1192" class="caseTitle">屏東縣 vs. 雲林縣</text>
+<line x1="592" y1="1425.0" x2="946" y2="1425.0" class="grid"/>
+<text x="552" y="1429.0" class="label">80</text>
+<line x1="592" y1="1354.3" x2="946" y2="1354.3" class="grid"/>
+<text x="552" y="1358.3" class="label">100</text>
+<line x1="592" y1="1283.7" x2="946" y2="1283.7" class="grid"/>
+<text x="552" y="1287.7" class="label">120</text>
+<line x1="592" y1="1213.0" x2="946" y2="1213.0" class="grid"/>
+<text x="552" y="1217.0" class="label">140</text>
+<polyline points="592.0,1351.7 605.6,1363.0 619.2,1339.9 632.8,1381.8 646.5,1332.7 660.1,1344.4 673.7,1370.2 687.3,1352.4 700.9,1349.2 714.5,1326.0 728.2,1371.5 741.8,1358.9 755.4,1369.8 769.0,1367.2 782.6,1354.7 796.2,1361.5 809.8,1372.3 823.5,1355.0 837.1,1342.5 850.7,1323.4 864.3,1307.6 877.9,1316.2 891.5,1280.0 905.2,1287.7 918.8,1271.5 932.4,1271.5 946.0,1272.4" class="treated"/>
+<text x="834.0" y="1265.4" class="label">屏東縣: 123.2</text>
+<polyline points="592.0,1380.4 605.6,1340.4 619.2,1364.2 632.8,1345.4 646.5,1367.3 660.1,1374.5 673.7,1359.5 687.3,1386.8 700.9,1329.7 714.5,1379.4 728.2,1389.1 741.8,1403.4 755.4,1402.7 769.0,1374.2 782.6,1368.8 796.2,1359.3 809.8,1346.5 823.5,1345.2 837.1,1335.1 850.7,1339.1 864.3,1348.1 877.9,1313.1 891.5,1296.7 905.2,1275.5 918.8,1277.5 932.4,1252.1 946.0,1243.2" class="matched"/>
+<text x="834.0" y="1257.2" class="label">雲林縣: 131.5</text>
+<text x="619.2" y="1452" text-anchor="middle" class="label">2000</text>
+<text x="728.2" y="1452" text-anchor="middle" class="label">2008</text>
+<text x="837.1" y="1452" text-anchor="middle" class="label">2016</text>
+<text x="946.0" y="1452" text-anchor="middle" class="label">2024</text>
+<rect x="55" y="1520" width="440" height="300" class="box"/>
+<text x="69" y="1547" class="caseTitle">苗栗縣 vs. 宜蘭縣</text>
+<line x1="107" y1="1780.0" x2="461" y2="1780.0" class="grid"/>
+<text x="67" y="1784.0" class="label">90</text>
+<line x1="107" y1="1709.3" x2="461" y2="1709.3" class="grid"/>
+<text x="67" y="1713.3" class="label">110</text>
+<line x1="107" y1="1638.7" x2="461" y2="1638.7" class="grid"/>
+<text x="67" y="1642.7" class="label">130</text>
+<line x1="107" y1="1568.0" x2="461" y2="1568.0" class="grid"/>
+<text x="67" y="1572.0" class="label">150</text>
+<polyline points="107.0,1751.8 120.6,1743.4 134.2,1739.6 147.8,1744.5 161.5,1751.2 175.1,1744.1 188.7,1764.9 202.3,1748.4 215.9,1711.7 229.5,1722.1 243.2,1755.0 256.8,1753.8 270.4,1739.2 284.0,1718.8 297.6,1722.1 311.2,1716.3 324.8,1682.6 338.5,1721.7 352.1,1660.3 365.7,1709.9 379.3,1702.1 392.9,1688.7 406.5,1656.8 420.2,1640.0 433.8,1615.3 447.4,1590.8 461.0,1568.8" class="treated"/>
+<text x="349.0" y="1561.8" class="label">苗栗縣: 149.8</text>
+<polyline points="107.0,1735.3 120.6,1715.3 134.2,1725.3 147.8,1762.0 161.5,1776.0 175.1,1737.3 188.7,1760.4 202.3,1717.3 215.9,1742.6 229.5,1750.4 243.2,1705.5 256.8,1752.6 270.4,1726.5 284.0,1764.1 297.6,1684.8 311.2,1721.3 324.8,1680.2 338.5,1653.1 352.1,1678.2 365.7,1680.9 379.3,1678.5 392.9,1671.5 406.5,1653.9 420.2,1658.3 433.8,1653.1 447.4,1662.7 461.0,1663.1" class="matched"/>
+<text x="349.0" y="1677.1" class="label">宜蘭縣: 123.1</text>
+<text x="134.2" y="1807" text-anchor="middle" class="label">2000</text>
+<text x="243.2" y="1807" text-anchor="middle" class="label">2008</text>
+<text x="352.1" y="1807" text-anchor="middle" class="label">2016</text>
+<text x="461.0" y="1807" text-anchor="middle" class="label">2024</text>
+<rect x="540" y="1520" width="440" height="300" class="box"/>
+<text x="554" y="1547" class="caseTitle">嘉義縣 vs. 雲林縣</text>
+<line x1="592" y1="1780.0" x2="946" y2="1780.0" class="grid"/>
+<text x="552" y="1784.0" class="label">80</text>
+<line x1="592" y1="1709.3" x2="946" y2="1709.3" class="grid"/>
+<text x="552" y="1713.3" class="label">100</text>
+<line x1="592" y1="1638.7" x2="946" y2="1638.7" class="grid"/>
+<text x="552" y="1642.7" class="label">120</text>
+<line x1="592" y1="1568.0" x2="946" y2="1568.0" class="grid"/>
+<text x="552" y="1572.0" class="label">140</text>
+<polyline points="592.0,1750.0 605.6,1724.4 619.2,1671.9 632.8,1707.2 646.5,1733.8 660.1,1731.2 673.7,1706.5 687.3,1697.2 700.9,1687.4 714.5,1718.8 728.2,1710.1 741.8,1723.6 755.4,1708.3 769.0,1692.4 782.6,1660.1 796.2,1671.2 809.8,1703.2 823.5,1658.4 837.1,1649.0 850.7,1648.3 864.3,1627.5 877.9,1667.2 891.5,1642.2 905.2,1636.4 918.8,1651.3 932.4,1630.6 946.0,1612.2" class="treated"/>
+<text x="834.0" y="1605.2" class="label">嘉義縣: 127.5</text>
+<polyline points="592.0,1735.4 605.6,1695.4 619.2,1719.2 632.8,1700.4 646.5,1722.3 660.1,1729.5 673.7,1714.5 687.3,1741.8 700.9,1684.7 714.5,1734.4 728.2,1744.1 741.8,1758.4 755.4,1757.7 769.0,1729.2 782.6,1723.8 796.2,1714.3 809.8,1701.5 823.5,1700.2 837.1,1690.1 850.7,1694.1 864.3,1703.1 877.9,1668.1 891.5,1651.7 905.2,1630.5 918.8,1632.5 932.4,1607.1 946.0,1598.2" class="matched"/>
+<text x="834.0" y="1612.2" class="label">雲林縣: 131.5</text>
+<text x="619.2" y="1807" text-anchor="middle" class="label">2000</text>
+<text x="728.2" y="1807" text-anchor="middle" class="label">2008</text>
+<text x="837.1" y="1807" text-anchor="middle" class="label">2016</text>
+<text x="946.0" y="1807" text-anchor="middle" class="label">2024</text>
+</svg>
+      <figcaption>Figure 5. Income index comparison, with 1999-2002 average set to 100. Blue is the focus case; brown is the matched comparison county.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Case-Level Interpretation</h2>
+    <ul>
+      <li><strong>Positive cases:</strong> Tainan, Hsinchu County, Miaoli, Kaohsiung, and Taitung show positive relative income growth. This means long dominant-party rule can coexist with development.</li>
+      <li><strong>Weak cases:</strong> Nantou is clearly negative; Taipei, Hualien, Pingtung, and Chiayi County are mixed or weak depending on the indicator. This means long dominant-party rule does not guarantee development.</li>
+      <li><strong>Bottom line:</strong> The party label alone is not the causal explanation. The same pattern of political continuity produces very different outcomes across places, so industrial structure, migration, central fiscal resources, and local administrative capacity need to be tested next.</li>
+    </ul>
+    <p>These results do not justify a universal pro-DPP or anti-KMT conclusion. They do suggest that “stable one-party local rule” is not a sufficient explanation for development. The local economic base, industrial transition, migration, central fiscal allocation, and administrative capacity likely matter at least as much.</p>
+  </section>
+
+  <section>
+    <h2>International Literature Context</h2>
+    <p>International research often finds that political alignment can affect intergovernmental grants, but the link from alignment to economic outcomes is less automatic. This literature supports a cautious case-based interpretation: if party continuity matters, it probably works through fiscal transfers, investment choices, and local capacity rather than through party label alone.</p>
+    <ol><li>Solé-Ollé, A., &amp; Sorribas-Navarro, P. (2008). “The effects of partisan alignment on the allocation of intergovernmental transfers.” Journal of Public Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0047272707000990">link</a><br><span class="note">Spain; difference-in-differences evidence that alignment can affect grants.</span></li>
+<li>Brollo, F., &amp; Nannicini, T. (2012). “Tying Your Enemy’s Hands in Close Races: The Politics of Federal Transfers in Brazil.” American Political Science Review. <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/tying-your-enemys-hands-in-close-races-the-politics-of-federal-transfers-in-brazil/15C1E15B8603C82B79592E34478C68D9">link</a><br><span class="note">Brazil; close-election design linking political incentives and federal transfers.</span></li>
+<li>Bracco, E., Lockwood, B., Porcelli, F., &amp; Redoano, M. (2015). “Intergovernmental grants as signals and the alignment effect: Theory and evidence.” Journal of Public Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0047272714002291">link</a><br><span class="note">Theory and evidence on grants as political signals under alignment.</span></li>
+<li>Siwińska-Gorzelak, J., &amp; Bukowska, G. (2023). “Intragovernmental Grant Distribution and Party Alignment Bias under Democratic and Authoritarian Governments: The Case of Poland.” East European Politics and Societies. <a href="https://journals.sagepub.com/doi/10.1177/08883254221116787">link</a><br><span class="note">Poland; quasi-experimental evidence on alignment bias in grants.</span></li>
+<li>Lee, H. et al. (2024). “Ideology, intergovernmental transfers, and public health spending: Evidence from South Korea.” Regional Science and Urban Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0166046224001054">link</a><br><span class="note">South Korea; ideology, transfers, and local policy spending.</span></li>
+<li>Dahlberg, M., Mörk, E., Rattsø, J., &amp; Ågren, H. (2008). “Using a discontinuous grant rule to identify the effect of grants on local taxes and spending.” Journal of Public Economics. <a href="https://www.sciencedirect.com/science/article/pii/S0047272707001028">link</a><br><span class="note">Useful benchmark on grant effects and local fiscal behavior, separate from party alignment.</span></li></ol>
+  </section>
+
+  <section>
+    <h2>What Would Make the Test Stronger?</h2>
+    <ul>
+      <li>Add mayoral election victory margins (<strong>縣市長勝選差距</strong>) from the Central Election Commission (<strong>中央選舉委員會</strong>) to compare close wins.</li>
+      <li>Add central fiscal transfers (<strong>統籌分配稅款／中央補助款</strong>) to test whether long-rule counties receive different resources.</li>
+      <li>Add sectoral controls for tourism, agriculture, manufacturing, semiconductors, public employment, and aging, especially for Hualien and Nantou.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Validation</h2>
+    <pre>研究資料檢核報告
+面板列數：540
+縣市數：20
+年度範圍：1998-2024
+所得非缺漏列：540
+失業率非缺漏列：540
+企業家數非缺漏列：228
+模型列數：25
+事件研究事件列數：289
+配對案例列數：270
+
+年度完整性：
+20 縣市 1998-2024 皆有面板列。
+
+黨籍抽查：臺北市 2015-2022 無黨籍；高雄市 2019-2020 中國國民黨；新竹市 2023 起台灣民眾黨。</pre>
+    <p class="note">Generated by <code>generate_case_focused_report.py</code> from the reproducible county-year panel.</p>
+  </section>
+</main>
+</body>
+</html>

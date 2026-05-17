@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 720" role="img" aria-label="Dominant party and development outcome matrix">
+<style>
+        .title{font:700 30px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .sub{font:16px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .head{font:700 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#374151}
+        .label{font:15px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#111827}
+        .small{font:13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#475569}
+        .grid{stroke:#d8e1ec;stroke-width:1}.zero{stroke:#64748b;stroke-width:2}
+        </style>
+<rect x="0" y="0" width="1180" height="720" fill="#fff"/>
+<text x="32" y="42" class="title">Party Dominance × Development Result</text>
+<text x="32" y="70" class="sub">政黨優勢 × 發展判讀：blue = KMT, green = DPP. Right = stronger vs. Taiwan benchmark.</text>
+<rect x="769.3" y="86" width="330.7" height="560" fill="#effaf2"/>
+<rect x="310" y="86" width="459.3" height="560" fill="#fff1f1"/>
+<line x1="401.9" y1="86" x2="401.9" y2="646" class="grid"/>
+<text x="401.9" y="675" text-anchor="middle" class="small">-20</text>
+<line x1="585.6" y1="86" x2="585.6" y2="646" class="grid"/>
+<text x="585.6" y="675" text-anchor="middle" class="small">-10</text>
+<line x1="769.3" y1="86" x2="769.3" y2="646" class="zero"/>
+<text x="769.3" y="675" text-anchor="middle" class="small">+0</text>
+<line x1="953.0" y1="86" x2="953.0" y2="646" class="grid"/>
+<text x="953.0" y="675" text-anchor="middle" class="small">+10</text>
+<text x="310" y="700" class="small">Cumulative excess household income growth, 1999-2024, pp (累積相對所得成長)</text>
+<text x="32" y="98" class="head">KMT dominant</text>
+<text x="34" y="117" class="label">新竹縣</text>
+<rect x="130" y="98" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="113" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="112" x2="1053.2" y2="112" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1053.2" cy="112" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
+<text x="1066.2" y="117" text-anchor="start" class="small">+15.5 · Mod+</text>
+<text x="34" y="165" class="label">苗栗縣</text>
+<rect x="130" y="146" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="161" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="160" x2="1007.7" y2="160" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1007.7" cy="160" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
+<text x="1020.7" y="165" text-anchor="start" class="small">+13.0 · Mod+</text>
+<text x="34" y="213" class="label">臺東縣</text>
+<rect x="130" y="194" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="209" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="208" x2="840.9" y2="208" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="840.9" cy="208" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="853.9" y="213" text-anchor="start" class="small">+3.9 · Mixed</text>
+<text x="34" y="261" class="label">花蓮縣</text>
+<rect x="130" y="242" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="257" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨15%</text>
+<line x1="769.3" y1="256" x2="712.7" y2="256" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="712.7" cy="256" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="699.7" y="261" text-anchor="end" class="small">-3.1 · Mixed</text>
+<text x="34" y="309" class="label">臺北市</text>
+<rect x="130" y="290" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="305" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨33%</text>
+<line x1="769.3" y1="304" x2="651.3" y2="304" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="651.3" cy="304" r="9" fill="#c53030" stroke="#fff" stroke-width="2"/>
+<text x="638.3" y="309" text-anchor="end" class="small">-6.4 · Bad</text>
+<text x="34" y="357" class="label">南投縣</text>
+<rect x="130" y="338" width="130" height="20" rx="10" fill="#2563b8" opacity=".92"/>
+<text x="195" y="353" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">KMT · 同黨37%</text>
+<line x1="769.3" y1="352" x2="342.4" y2="352" stroke="#2563b8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="342.4" cy="352" r="9" fill="#c53030" stroke="#fff" stroke-width="2"/>
+<text x="329.4" y="357" text-anchor="end" class="small">-23.2 · Bad</text>
+<text x="32" y="386" class="head">DPP dominant</text>
+<text x="34" y="405" class="label">臺南市</text>
+<rect x="130" y="386" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="401" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨63%</text>
+<line x1="769.3" y1="400" x2="852.4" y2="400" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="852.4" cy="400" r="9" fill="#15803d" stroke="#fff" stroke-width="2"/>
+<text x="865.4" y="405" text-anchor="start" class="small">+4.5 · Good</text>
+<text x="34" y="453" class="label">高雄市</text>
+<rect x="130" y="434" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="449" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨56%</text>
+<line x1="769.3" y1="448" x2="825.8" y2="448" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="825.8" cy="448" r="9" fill="#2563b8" stroke="#fff" stroke-width="2"/>
+<text x="838.8" y="453" text-anchor="start" class="small">+3.1 · Mod+</text>
+<text x="34" y="501" class="label">嘉義縣</text>
+<rect x="130" y="482" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="497" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨63%</text>
+<line x1="769.3" y1="496" x2="798.4" y2="496" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="798.4" cy="496" r="9" fill="#64748b" stroke="#fff" stroke-width="2"/>
+<text x="811.4" y="501" text-anchor="start" class="small">+1.6 · Mixed</text>
+<text x="34" y="549" class="label">屏東縣</text>
+<rect x="130" y="530" width="130" height="20" rx="10" fill="#1f9d55" opacity=".92"/>
+<text x="195" y="545" text-anchor="middle" font-size="12" font-family="system-ui" fill="#fff">DPP · 同黨63%</text>
+<line x1="769.3" y1="544" x2="701.1" y2="544" stroke="#1f9d55" stroke-width="5" stroke-linecap="round"/>
+<circle cx="701.1" cy="544" r="9" fill="#b7791f" stroke="#fff" stroke-width="2"/>
+<text x="688.1" y="549" text-anchor="end" class="small">-3.7 · Mild-</text>
+<text x="32" y="675" class="small">Note: x-axis is Taiwan benchmark only; verdict also uses own rank, jobless, firms/sales, and matched gap.</text>
+</svg>
