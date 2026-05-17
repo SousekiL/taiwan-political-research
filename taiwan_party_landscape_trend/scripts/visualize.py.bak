@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+import numpy as np, pandas as pd
+from pathlib import Path
+import matplotlib as mpl
+mpl.use("Agg")
+import matplotlib.pyplot as plt, matplotlib.patches as mpatches
+from matplotlib.collections import LineCollection
+from matplotlib.lines import Line2D
+from matplotlib.ticker import MultipleLocator
+import matplotlib.font_manager as fm
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+ROOT = SCRIPT_DIR.parent
+DATA_DIR = ROOT / 'data'
+OUT_DIR = ROOT / 'outputs'
+OUT_DIR.mkdir(exist_ok=True)
+
+PANEL_CSV = DATA_DIR / 'unified_election_panel.csv'
+COMPOSITE_CSV = OUT_DIR / 'composite_index.csv'
+OUT_PNG = OUT_DIR / 'taiwan_party_landscape_trend.png'
+OUT_SVG = OUT_DIR / 'taiwan_party_landscape_trend.svg'
+
+KMT_BLUE = '#1E50A2'
+DPP_GREEN = '#1B9B58'
+NEUTRAL_GREY = '#6B7280'
+FILL_KMT = '#E8F0FE'
+FILL_DPP = '#E6F5E6'
+PARITY_COLOUR = '#9CA3AF'
+DARK_TEXT = '#111827'
+MID_TEXT = '#374151'
+START_YEAR, END_YEAR = 1995, 2025
+Y_MIN, Y_MAX = 0.35, 0.70
+
+_cjk_font = None
+for fp in ['/System/Library/Fonts/PingFang.ttc', '/System/Library/Fonts/Hiragino Sans GB.ttc', '/System/Library/Fonts/STHeiti Light.ttc']:
+    if Path(fp).exists():
+        _cjk_font = fm.FontProperties(fname=fp)
+        break
+if _cjk_font:
+    plt.rcParams['font.family'] = _cjk_font.get_name()
+else:
+    plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'PingFang TC', 'SimHei', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False
+
+
+def load_data():
+    panel = pd.read_csv(PANEL_CSV, encoding='utf-8-sig')
+    comp = pd.read_csv(COMPOSITE_CSV, encoding='utf-8-sig')
+    return panel, comp
+
+
+def carry_forward_tier(panel, tier, years):
+    td = panel[panel['tier'] == tier].sort_values('year').copy()
+    records = []
+    last_val = None
+    for y in years:
+        match = td[td['year'] == y]
+        if not match.empty:
+            last_val = match.iloc[0]['kmt_share_major_only']
+        records.append({'year': y, 'kmt_share': last_val})
+    return pd.DataFrame(records)
+
+
+def multicolour_line(ax, x, y, cmap_threshold=0.5, lw=3.0):
+    points = np.array([x, y]).T.reshape(-1, 1, 2)
+    segments = np.concatenate([points[:-1], points[1:]], axis=1)
+    colours = [KMT_BLUE if (yi + yj) / 2 >= cmap_threshold else DPP_GREEN for yi, yj in zip(y[:-1], y[1:])]
+    lc = LineCollection(segments, colors=colours, linewidths=lw, solid_capstyle='round', zorder=4)
+    ax.add_collection(lc)
+
+
+def add_power_transfer_annotations(ax):
+    events = [
+        (2000, 'First transfer\nChen Shui-bian\n陳水扁當選', -0.05),
+        (2008, 'Second transfer\nMa Ying-jeou\n馬英九當選', 0.05),
+        (2016, 'Third transfer\nTsai Ing-wen\n蔡英文當選', -0.05),
+        (2024, 'Fourth transfer\nLai Ching-te\n賴清德當選', 0.05),
+    ]
+    for year, text, y_off in events:
+        ax.axvline(year, color=NEUTRAL_GREY, linewidth=0.7, linestyle='-', alpha=0.4, zorder=1)
+        ax.annotate(text, xy=(year, 0.5 + y_off), fontsize=8, ha='center', va='center',
+                    color=MID_TEXT, fontweight='medium',
+                    bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='#D1D5DB', alpha=0.95, linewidth=0.6),
+                    zorder=5)
+
+
+def sparkline(ax, df, title_en, title_cn, subtitle, show_xticks=False):
+    x = df['year'].values
+    y = df['kmt_share'].values
+    mask = ~pd.isna(y)
+    x = x[mask]; y = y[mask]
+    ax.fill_between(x, Y_MIN, y, where=(y >= 0.5), color=FILL_KMT, alpha=0.55, interpolate=True, zorder=0)
+    ax.fill_between(x, y, Y_MAX, where=(y >= 0.5), color=FILL_KMT, alpha=0.55, interpolate=True, zorder=0)
+    ax.fill_between(x, Y_MIN, y, where=(y < 0.5), color=FILL_DPP, alpha=0.55, interpolate=True, zorder=0)
+    ax.fill_between(x, y, Y_MAX, where=(y < 0.5), color=FILL_DPP, alpha=0.55, interpolate=True, zorder=0)
+    multicolour_line(ax, x, y, lw=2.0)
+    ax.axhline(0.5, color=PARITY_COLOUR, linewidth=1.0, linestyle='-', alpha=0.5, zorder=3)
+    ax.set_xlim(START_YEAR, END_YEAR)
+    ax.set_ylim(Y_MIN, Y_MAX)
+    ax.set_yticks([0.40, 0.50, 0.60])
+    ax.set_yticklabels(['40 %', '50 %', '60 %'], fontsize=8, color=MID_TEXT)
+    if show_xticks:
+        ax.xaxis.set_major_locator(MultipleLocator(4))
+        ax.tick_params(axis='x', labelsize=8, colors=MID_TEXT)
+        ax.set_xlabel('Year', fontsize=10, color=DARK_TEXT, labelpad=6)
+    else:
+        ax.tick_params(axis='x', labelbottom=False)
+    ax.grid(axis='y', linestyle=':', alpha=0.35, color='#D1D5DB')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_color('#D1D5DB')
+    ax.spines['bottom'].set_color('#D1D5DB')
+    ax.text(0.02, 0.98, title_en, transform=ax.transAxes, fontsize=10, fontweight='bold', color=DARK_TEXT, va='top', ha='left')
+    ax.text(0.02, 0.86, title_cn, transform=ax.transAxes, fontsize=9, color=MID_TEXT, va='top', ha='left')
+    ax.text(0.02, 0.74, subtitle, transform=ax.transAxes, fontsize=7.5, color='#6B7280', va='top', ha='left', style='italic')
+
+
+def main():
+    panel, composite = load_data()
+    fig = plt.figure(figsize=(14, 11))
+    gs = fig.add_gridspec(nrows=5, ncols=1, height_ratios=[0.55, 0.02, 0.13, 0.13, 0.13], hspace=0.22)
+    ax_main = fig.add_subplot(gs[0, 0])
+    ax_spacer = fig.add_subplot(gs[1, 0])
+    ax_spacer.axis('off')
+    ax_pres = fig.add_subplot(gs[2, 0])
+    ax_leg = fig.add_subplot(gs[3, 0])
+    ax_local = fig.add_subplot(gs[4, 0])
+
+    years = range(START_YEAR, END_YEAR + 1)
+    x = composite['year'].values
+    y = composite['composite_kmt_share'].values
+
+    ax_main.fill_between(x, Y_MIN, y, where=(y >= 0.5), color=FILL_KMT, alpha=0.55, interpolate=True, zorder=0)
+    ax_main.fill_between(x, y, Y_MAX, where=(y >= 0.5), color=FILL_KMT, alpha=0.55, interpolate=True, zorder=0)
+    ax_main.fill_between(x, Y_MIN, y, where=(y < 0.5), color=FILL_DPP, alpha=0.55, interpolate=True, zorder=0)
+    ax_main.fill_between(x, y, Y_MAX, where=(y < 0.5), color=FILL_DPP, alpha=0.55, interpolate=True, zorder=0)
+
+    multicolour_line(ax_main, x, y, lw=4.0)
+
+    e_years = composite[composite['is_election_year']]
+    for _, row in e_years.iterrows():
+        c = KMT_BLUE if row['composite_kmt_share'] >= 0.5 else DPP_GREEN
+        ax_main.scatter(row['year'], row['composite_kmt_share'], color=c, s=55, edgecolors='white', linewidths=1.2, zorder=6)
+
+    ax_main.axhline(0.5, color=PARITY_COLOUR, linewidth=1.0, linestyle='-', alpha=0.6, zorder=3)
+    add_power_transfer_annotations(ax_main)
+
+    ax_main.set_xlim(START_YEAR, END_YEAR)
+    ax_main.set_ylim(Y_MIN, Y_MAX)
+    ax_main.set_ylabel('KMT Share (%) 國民黨勢力佔比', fontsize=11, color=DARK_TEXT, labelpad=10)
+    ax_main.set_yticks([0.40, 0.45, 0.50, 0.55, 0.60, 0.65])
+    ax_main.set_yticklabels(['40 %', '45 %', '50 %\nParity 勢均力敵', '55 %', '60 %', '65 %'], fontsize=9, color=MID_TEXT)
+    ax_main.xaxis.set_major_locator(MultipleLocator(2))
+    ax_main.tick_params(axis='x', labelsize=9, colors=MID_TEXT)
+    ax_main.set_xlabel('')
+    ax_main.grid(axis='y', linestyle=':', alpha=0.35, color='#D1D5DB')
+    ax_main.spines['top'].set_visible(False)
+    ax_main.spines['right'].set_visible(False)
+    ax_main.spines['left'].set_color('#D1D5DB')
+    ax_main.spines['bottom'].set_color('#D1D5DB')
+
+    legend_elements = [
+        mpatches.Patch(facecolor=FILL_KMT, edgecolor=KMT_BLUE, label='KMT lead 國民黨領先'),
+        mpatches.Patch(facecolor=FILL_DPP, edgecolor=DPP_GREEN, label='DPP lead 民進黨領先'),
+        Line2D([0], [0], color=PARITY_COLOUR, linewidth=1.0, linestyle='-', label='Parity line (50 %)'),
+    ]
+    ax_main.legend(handles=legend_elements, loc='upper right', fontsize=9, framealpha=0.95, edgecolor='#E5E7EB',
+                   title='Composite Index 綜合指數', title_fontsize=9)
+
+    ax_main.set_title("Taiwan's Partisan Power Index (1996-2024)\n"
+                      "台灣政黨版圖勢力綜合指數",
+                      fontsize=18, fontweight='bold', color=DARK_TEXT, pad=16, loc='left')
+
+    sparkline(ax_pres, carry_forward_tier(panel, 'presidential', years), 'Presidential', '總統直選', 'KMT share of KMT+DPP vote', show_xticks=False)
+    sparkline(ax_leg, carry_forward_tier(panel, 'legislative', years), 'Legislative', '立法委員', 'KMT share of KMT+DPP seats', show_xticks=False)
+    sparkline(ax_local, carry_forward_tier(panel, 'local_executive', years), 'Local Executive', '縣市首長', 'KMT share of KMT+DPP offices', show_xticks=True)
+
+    fig.text(0.07, 0.004, 'Source: Central Election Commission (中央選舉委員會)  |  Method: weighted composite. Third-force votes excluded. Non-election years filled by carrying forward the most recent result.',
+             fontsize=8, color=MID_TEXT, ha='left')
+
+    plt.savefig(OUT_PNG, dpi=300, bbox_inches='tight', facecolor='white')
+    plt.savefig(OUT_SVG, bbox_inches='tight', facecolor='white')
+    print(f'Saved -> {OUT_PNG}')
+    print(f'Saved -> {OUT_SVG}')
+
+
+if __name__ == '__main__':
+    main()
